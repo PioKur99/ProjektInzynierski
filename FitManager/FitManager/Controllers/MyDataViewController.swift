@@ -17,6 +17,7 @@ class MyDataViewController: UIViewController {
     var activityLevelSelect = "Brak aktywnosci"
     var goalsSelect = "Utrata wagi"
     
+    
     @IBOutlet weak var genderPicker: UIPickerView!
     @IBOutlet weak var activityLevelPicker: UIPickerView!
     @IBOutlet weak var goalPicker: UIPickerView!
@@ -55,63 +56,23 @@ class MyDataViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         
     }
-    
-    func getActivityMultiplier() -> Double {
-        if(activityLevelSelect == "Brak aktywnosci"){
-            return 1.2
-        }
-        
-        else if (activityLevelSelect == "Niska aktywnosc"){
-            return 1.3
-        }
-        
-        else if (activityLevelSelect == "Srednia aktywnosc"){
-            return 1.45
-        }
-        
-        else if (activityLevelSelect == "Wysoka aktywnosc"){
-            return 1.6
-        }
-        
-        else {return 1.85}
-        
-    }
-    
-    func calculateBMR() -> Double {
-        var BMR = 0.0
-        let age = Double(ageInput.text!)
-        let height = Double(heightInput.text!)
-        let weight = Double(weightInput.text!)
-        let activityMultiplier = getActivityMultiplier()
-        
-        if(genderSelect == "Mezczyzna") {
-            BMR = ((9.99 * weight!) + (6.25 * height!) - (4.92 * age!) + 5) * activityMultiplier
-        }
-        else {
-            BMR = ((9.99 * weight!) + (6.25 * height!) - (4.92 * age!) - 161) * activityMultiplier
-        }
-        
-        if(goalsSelect == "Utrata wagi") {return BMR - 150.0}
-        else if(goalsSelect == "Przybranie wagi") {return BMR + 150.0}
-        else {return BMR}
-        
-    }
+   
     @IBAction func calculateBMRClick(_ sender: Any) {
         if(ageInput.text != "" && heightInput.text != "" && weightInput.text != "") {
-            let BMR = calculateBMR()
-            let proteins = Int((0.25 * BMR) / 4)
-            let fats = Int((0.25 * BMR) / 9)
-            let carbs = Int((0.6 * BMR) / 4)
+            
+            let BMR = BMR(iAge: Double(ageInput.text!)!, iHeight: Double(heightInput.text!)!, iWeight: Double(weightInput.text!)!,
+                          iGender: genderSelect, iActivityLevel: activityLevelSelect, iGoal: goalsSelect)
+            BMR.setBMRValue()
             
             caloriesLabel.isHidden = false
             proteinLabel.isHidden = false
             carbsLabel.isHidden = false
             fatsLabel.isHidden = false
             
-            caloriesLabelValue.text = String(Int(BMR))
-            proteinLabelValue.text = String(proteins)
-            carbsLabelValue.text = String(carbs)
-            fatsLabelValue.text = String(fats)
+            caloriesLabelValue.text = String(Int(BMR.BMRValue))
+            proteinLabelValue.text = String(Int(BMR.proteinAmount))
+            carbsLabelValue.text = String(Int(BMR.carbsAmount))
+            fatsLabelValue.text = String(Int(BMR.fatsAmount))
             
         }
     }

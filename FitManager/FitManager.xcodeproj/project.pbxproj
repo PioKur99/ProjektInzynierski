@@ -17,6 +17,7 @@
 		247BECCC268A29E500BE18DE /* MyMealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BECCB268A29E500BE18DE /* MyMealsViewController.swift */; };
 		247BECCE268A2A0100BE18DE /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BECCD268A2A0100BE18DE /* ProductsViewController.swift */; };
 		247BECD0268A2C9700BE18DE /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BECCF268A2C9600BE18DE /* TabBarViewController.swift */; };
+		24AEB7C2268AFE6C0018E7B4 /* BMR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AEB7C1268AFE6C0018E7B4 /* BMR.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		247BECCB268A29E500BE18DE /* MyMealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMealsViewController.swift; sourceTree = "<group>"; };
 		247BECCD268A2A0100BE18DE /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		247BECCF268A2C9600BE18DE /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		24AEB7C1268AFE6C0018E7B4 /* BMR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMR.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,8 @@
 		247BECB1268A150600BE18DE /* FitManager */ = {
 			isa = PBXGroup;
 			children = (
+				24AEB7C0268AFE4C0018E7B4 /* Data */,
+				24AEB7BF268AFD350018E7B4 /* Controllers */,
 				247BECB2268A150600BE18DE /* AppDelegate.swift */,
 				247BECB4268A150600BE18DE /* SceneDelegate.swift */,
 				247BECB8268A150600BE18DE /* Main.storyboard */,
@@ -71,12 +75,27 @@
 				247BECC0268A150700BE18DE /* LaunchScreen.storyboard */,
 				247BECC3268A150700BE18DE /* Info.plist */,
 				247BECBB268A150600BE18DE /* FitManager.xcdatamodeld */,
+			);
+			path = FitManager;
+			sourceTree = "<group>";
+		};
+		24AEB7BF268AFD350018E7B4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				247BECC9268A29A500BE18DE /* MyDataViewController.swift */,
 				247BECCB268A29E500BE18DE /* MyMealsViewController.swift */,
 				247BECCD268A2A0100BE18DE /* ProductsViewController.swift */,
 				247BECCF268A2C9600BE18DE /* TabBarViewController.swift */,
 			);
-			path = FitManager;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		24AEB7C0268AFE4C0018E7B4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				24AEB7C1268AFE6C0018E7B4 /* BMR.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +173,7 @@
 				247BECBD268A150600BE18DE /* FitManager.xcdatamodeld in Sources */,
 				247BECB3268A150600BE18DE /* AppDelegate.swift in Sources */,
 				247BECD0268A2C9700BE18DE /* TabBarViewController.swift in Sources */,
+				24AEB7C2268AFE6C0018E7B4 /* BMR.swift in Sources */,
 				247BECB5268A150600BE18DE /* SceneDelegate.swift in Sources */,
 				247BECCC268A29E500BE18DE /* MyMealsViewController.swift in Sources */,
 			);
