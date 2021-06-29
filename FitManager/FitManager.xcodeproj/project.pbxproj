@@ -18,6 +18,7 @@
 		247BECCE268A2A0100BE18DE /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BECCD268A2A0100BE18DE /* ProductsViewController.swift */; };
 		247BECD0268A2C9700BE18DE /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BECCF268A2C9600BE18DE /* TabBarViewController.swift */; };
 		24AEB7C2268AFE6C0018E7B4 /* BMR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AEB7C1268AFE6C0018E7B4 /* BMR.swift */; };
+		24AEB7C4268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AEB7C3268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		247BECCD268A2A0100BE18DE /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		247BECCF268A2C9600BE18DE /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		24AEB7C1268AFE6C0018E7B4 /* BMR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMR.swift; sourceTree = "<group>"; };
+		24AEB7C3268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevelsInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				247BECCB268A29E500BE18DE /* MyMealsViewController.swift */,
 				247BECCD268A2A0100BE18DE /* ProductsViewController.swift */,
 				247BECCF268A2C9600BE18DE /* TabBarViewController.swift */,
+				24AEB7C3268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				247BECBD268A150600BE18DE /* FitManager.xcdatamodeld in Sources */,
 				247BECB3268A150600BE18DE /* AppDelegate.swift in Sources */,
 				247BECD0268A2C9700BE18DE /* TabBarViewController.swift in Sources */,
+				24AEB7C4268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift in Sources */,
 				24AEB7C2268AFE6C0018E7B4 /* BMR.swift in Sources */,
 				247BECB5268A150600BE18DE /* SceneDelegate.swift in Sources */,
 				247BECCC268A29E500BE18DE /* MyMealsViewController.swift in Sources */,

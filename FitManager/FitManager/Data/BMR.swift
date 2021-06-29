@@ -13,6 +13,7 @@ class BMR {
     var activityLevelMultiplier: Double = 0.0
     var BMRValue: Double = 0.0
     
+    
     init (iAge: Double, iHeight: Double, iWeight: Double, iGender: String, iActivityLevel: String, iGoal: String) {
         self.age = iAge
         self.height = iHeight

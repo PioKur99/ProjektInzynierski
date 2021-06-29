@@ -41,17 +41,55 @@ class MyDataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        genderPicker.delegate = self
-        genderPicker.dataSource = self
-        activityLevelPicker.delegate = self
-        activityLevelPicker.dataSource = self
-        goalPicker.delegate = self
-        goalPicker.dataSource = self
-        
         caloriesLabel.isHidden = true
-        proteinLabel.isHidden = true
-        carbsLabel.isHidden = true
-        fatsLabel.isHidden = true
+        proteinLabel.isHidden  = true
+        carbsLabel.isHidden    = true
+        fatsLabel.isHidden     = true
+        
+        genderPicker.delegate          = self
+        genderPicker.dataSource        = self
+        activityLevelPicker.delegate   = self
+        activityLevelPicker.dataSource = self
+        goalPicker.delegate            = self
+        goalPicker.dataSource          = self
+        
+        let tempBMRStrings = UserDefaults.standard.object(forKey: "BMRStrings")
+        let tempBMRNums = UserDefaults.standard.object(forKey: "BMRNumbs")
+        if let BMRStrings = tempBMRStrings as? NSArray, let BMRNums = tempBMRNums as? NSArray {
+            
+            let tmpCalories = convertAnyToString(word: BMRNums[7])
+            let tmpProteins = convertAnyToString(word: BMRNums[3])
+            let tmpCarbs    = convertAnyToString(word: BMRNums[4])
+            let tmpFats     = convertAnyToString(word: BMRNums[5])
+            let tmpGender   =             BMRStrings[0] as! String
+            let tmpActivity =             BMRStrings[1] as! String
+            let tmpGoal     =             BMRStrings[2] as! String
+            
+            caloriesLabel.isHidden = false
+            proteinLabel.isHidden  = false
+            carbsLabel.isHidden    = false
+            fatsLabel.isHidden     = false
+            
+            ageInput.text           = "\(BMRNums[0])"
+            heightInput.text        = "\(BMRNums[1])"
+            weightInput.text        = "\(BMRNums[2])"
+            caloriesLabelValue.text = tmpCalories
+            proteinLabelValue.text  = tmpProteins
+            carbsLabelValue.text    = tmpCarbs
+            fatsLabelValue.text     = tmpFats
+            
+            print(genders.firstIndex(of: tmpGender)!)
+            print(activityLevel.firstIndex(of: tmpActivity)!)
+            print(goals.firstIndex(of: tmpGoal)!)
+            
+            let genderIndex = genders.firstIndex(of: tmpGender)!
+            let activityIndex = activityLevel.firstIndex(of: tmpActivity)!
+            let goalIndex = goals.firstIndex(of: tmpGoal)!
+            
+            genderPicker.selectRow(genderIndex, inComponent: 0, animated: true)
+            activityLevelPicker.selectRow(activityIndex, inComponent: 0, animated: true)
+            goalPicker.selectRow(goalIndex, inComponent: 0, animated: true)
+        }
         
         self.hideKeyboardWhenTappedAround()
         
@@ -64,6 +102,12 @@ class MyDataViewController: UIViewController {
                           iGender: genderSelect, iActivityLevel: activityLevelSelect, iGoal: goalsSelect)
             BMR.setBMRValue()
             
+            let BMRStringAttributes: [String] = [BMR.gender, BMR.activityLevel, BMR.goal]
+            let BMRNumericAttributes: [Double] = [BMR.age, BMR.height, BMR.weight, BMR.proteinAmount, BMR.carbsAmount, BMR.fatsAmount, BMR.activityLevelMultiplier, BMR.BMRValue]
+            
+            UserDefaults.standard.setValue(BMRStringAttributes, forKey: "BMRStrings")
+            UserDefaults.standard.setValue(BMRNumericAttributes, forKey: "BMRNumbs")
+            
             caloriesLabel.isHidden = false
             proteinLabel.isHidden = false
             carbsLabel.isHidden = false
@@ -75,6 +119,14 @@ class MyDataViewController: UIViewController {
             fatsLabelValue.text = String(Int(BMR.fatsAmount))
             
         }
+    }
+    
+    func convertAnyToString(word: Any) -> String {
+        
+        let doubleVal: Double = word as! Double
+        let intVal = Int(doubleVal)
+        let stringVal = "\(intVal)"
+        return stringVal
     }
     
 }
