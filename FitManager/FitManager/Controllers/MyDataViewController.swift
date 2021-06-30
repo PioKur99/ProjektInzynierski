@@ -5,7 +5,7 @@
 //  Created by Piotr Kurda on 28/06/2021.
 //
 
-// To do: Zapisywanie danych po restarcie apki
+// To do: Layout?
 import UIKit
 
 class MyDataViewController: UIViewController {
@@ -78,17 +78,9 @@ class MyDataViewController: UIViewController {
             carbsLabelValue.text    = tmpCarbs
             fatsLabelValue.text     = tmpFats
             
-            print(genders.firstIndex(of: tmpGender)!)
-            print(activityLevel.firstIndex(of: tmpActivity)!)
-            print(goals.firstIndex(of: tmpGoal)!)
-            
-            let genderIndex = genders.firstIndex(of: tmpGender)!
-            let activityIndex = activityLevel.firstIndex(of: tmpActivity)!
-            let goalIndex = goals.firstIndex(of: tmpGoal)!
-            
-            genderPicker.selectRow(genderIndex, inComponent: 0, animated: true)
-            activityLevelPicker.selectRow(activityIndex, inComponent: 0, animated: true)
-            goalPicker.selectRow(goalIndex, inComponent: 0, animated: true)
+            genderPicker.selectRow(genders.firstIndex(of: tmpGender)!, inComponent: 0, animated: true)
+            activityLevelPicker.selectRow(activityLevel.firstIndex(of: tmpActivity)!, inComponent: 0, animated: true)
+            goalPicker.selectRow(goals.firstIndex(of: tmpGoal)!, inComponent: 0, animated: true)
         }
         
         self.hideKeyboardWhenTappedAround()
