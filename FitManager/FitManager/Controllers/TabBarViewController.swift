@@ -16,7 +16,6 @@ class TabBarViewController: UITabBarController {
         if(firstLoad == true) {self.selectedIndex = 1}
         else {self.selectedIndex = 0}
         
-        
     }
     
         
