@@ -9,13 +9,9 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
-    var firstLoad: Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if(firstLoad == true) {self.selectedIndex = 1}
-        else {self.selectedIndex = 0}
-        
+        self.selectedIndex = 1
     }
     
         

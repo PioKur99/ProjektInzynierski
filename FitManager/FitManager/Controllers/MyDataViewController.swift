@@ -80,6 +80,12 @@ class MyDataViewController: UIViewController {
         
     }
    
+    @IBAction func showActivityDetails(_ sender: Any) {
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "ActivityLevelsInfoViewController") 
+        self.navigationController?.pushViewController(resultViewController, animated: true)
+    }
     @IBAction func calculateBMRClick(_ sender: Any) {
         if(ageInput.text != "" && heightInput.text != "" && weightInput.text != "") {
             
