@@ -69,3 +69,20 @@ class BMR {
     
     }
 }
+
+func convertAnyToString(word: Any) -> String {
+    
+    let doubleVal: Double = word as! Double
+    let intVal = Int(doubleVal)
+    let stringVal = "\(intVal)"
+    return stringVal
+}
+
+func mapBMRValuesToStrings(inputArr: NSArray) -> [String] {
+    var output: [String] = []
+    for elem in inputArr {
+        let intValue = convertAnyToString(word: elem)
+        output.append(intValue)
+    }
+    return output
+}

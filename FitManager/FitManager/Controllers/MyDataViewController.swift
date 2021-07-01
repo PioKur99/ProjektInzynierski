@@ -5,7 +5,6 @@
 //  Created by Piotr Kurda on 28/06/2021.
 //
 
-// To do: Layout?
 import UIKit
 
 class MyDataViewController: UIViewController {
@@ -57,30 +56,24 @@ class MyDataViewController: UIViewController {
         let tempBMRNums = UserDefaults.standard.object(forKey: "BMRNumbs")
         if let BMRStrings = tempBMRStrings as? NSArray, let BMRNums = tempBMRNums as? NSArray {
             
-            let tmpCalories = convertAnyToString(word: BMRNums[7])
-            let tmpProteins = convertAnyToString(word: BMRNums[3])
-            let tmpCarbs    = convertAnyToString(word: BMRNums[4])
-            let tmpFats     = convertAnyToString(word: BMRNums[5])
-            let tmpGender   =             BMRStrings[0] as! String
-            let tmpActivity =             BMRStrings[1] as! String
-            let tmpGoal     =             BMRStrings[2] as! String
+            let BMRValues = mapBMRValuesToStrings(inputArr: BMRNums)
             
             caloriesLabel.isHidden = false
             proteinLabel.isHidden  = false
             carbsLabel.isHidden    = false
             fatsLabel.isHidden     = false
             
-            ageInput.text           = "\(BMRNums[0])"
-            heightInput.text        = "\(BMRNums[1])"
-            weightInput.text        = "\(BMRNums[2])"
-            caloriesLabelValue.text = tmpCalories
-            proteinLabelValue.text  = tmpProteins
-            carbsLabelValue.text    = tmpCarbs
-            fatsLabelValue.text     = tmpFats
+            ageInput.text           = BMRValues[0]
+            heightInput.text        = BMRValues[1]
+            weightInput.text        = BMRValues[2]
+            caloriesLabelValue.text = BMRValues[7]
+            proteinLabelValue.text  = BMRValues[3]
+            carbsLabelValue.text    = BMRValues[4]
+            fatsLabelValue.text     = BMRValues[5]
             
-            genderPicker.selectRow(genders.firstIndex(of: tmpGender)!, inComponent: 0, animated: true)
-            activityLevelPicker.selectRow(activityLevel.firstIndex(of: tmpActivity)!, inComponent: 0, animated: true)
-            goalPicker.selectRow(goals.firstIndex(of: tmpGoal)!, inComponent: 0, animated: true)
+            genderPicker.selectRow(genders.firstIndex(of: (BMRStrings[0] as! String))!, inComponent: 0, animated: true)
+            activityLevelPicker.selectRow(activityLevel.firstIndex(of: BMRStrings[1] as! String)!, inComponent: 0, animated: true)
+            goalPicker.selectRow(goals.firstIndex(of: BMRStrings[2] as! String)!, inComponent: 0, animated: true)
         }
         
         self.hideKeyboardWhenTappedAround()
@@ -111,14 +104,6 @@ class MyDataViewController: UIViewController {
             fatsLabelValue.text = String(Int(BMR.fatsAmount))
             
         }
-    }
-    
-    func convertAnyToString(word: Any) -> String {
-        
-        let doubleVal: Double = word as! Double
-        let intVal = Int(doubleVal)
-        let stringVal = "\(intVal)"
-        return stringVal
     }
     
 }
