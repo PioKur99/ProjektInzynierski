@@ -12,15 +12,13 @@ class SupperViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
+        /*let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
         DB.child("Test").observeSingleEvent(of: .value, with: {snapshot in
             guard let value = snapshot.value as? [String: String] else {
                 return
             }
             print("Value: \(value)" )
-        })
-        
-
+        })*/
     }
 
 }

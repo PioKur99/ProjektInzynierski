@@ -10,15 +10,15 @@ import FirebaseDatabase
 
 class TabBarViewController: UITabBarController {
     
-    let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
+    //let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let testObj: [String: String] = [
+        /*let testObj: [String: String] = [
             "name" : "Piotr",
             "lastName": "K"
         ]
-        DB.child("Test").setValue(testObj)
+        DB.child("Test").setValue(testObj)*/
         self.selectedIndex = 1
     }
     

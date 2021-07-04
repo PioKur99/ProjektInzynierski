@@ -79,6 +79,13 @@ class MyDataViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         
     }
+    
+    func missingDataAlert() {
+        let alert = UIAlertController(title: "Nie udało się obliczyć zapotrzebowania", message: "Upewnij się, że wszystkie pola posiadają wartość.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Zamknij", style: .cancel)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
    
     @IBAction func showActivityDetails(_ sender: Any) {
         
@@ -109,6 +116,10 @@ class MyDataViewController: UIViewController {
             carbsLabelValue.text = String(Int(BMR.carbsAmount))
             fatsLabelValue.text = String(Int(BMR.fatsAmount))
             
+        }
+        
+        else {
+            missingDataAlert()
         }
     }
     
