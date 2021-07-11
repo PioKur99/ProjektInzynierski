@@ -72,6 +72,10 @@ class MyMealsViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        viewDidLoad()
+    }
+    
     @IBAction func navigateToBreakfast(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "BreakfastViewController")
