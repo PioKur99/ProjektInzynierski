@@ -11,22 +11,22 @@ import FirebaseDatabase
 class ProductsViewController: UIViewController {
     
     let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
+    var products: [Product] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        products = []
         DB.child("Products").observeSingleEvent(of: .value, with: {snapshot in
-            let val = snapshot.value
-            print(val!)
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                let newProduct = Product(snapshot: child)
+                self.products.append(newProduct)
+                newProduct.printProd()
+            }
         })
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        DB.child("Products").observeSingleEvent(of: .value, with: {snapshot in
-            let val = snapshot.value
-            print(val!)
-        })
+        viewDidLoad()
     }
     
 

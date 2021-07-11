@@ -39,7 +39,6 @@ class MyDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         caloriesLabel.isHidden = true
         proteinLabel.isHidden  = true
         carbsLabel.isHidden    = true

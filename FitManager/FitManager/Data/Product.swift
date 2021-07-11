@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
 class Product {
     
@@ -26,4 +27,23 @@ class Product {
         fatsPer100g = iFats
     }
     
+    init(snapshot: DataSnapshot) {
+        let snap = snapshot.value as! NSDictionary
+        name = snap["name"] as? String ?? ""
+        manufacturer = snap["manufacturer"] as? String ?? ""
+        kcalPer100g = snap["kcalPer100g"] as? Double ?? 0.0
+        carbsPer100g = snap["carbsPer100g"] as? Double ?? 0.0
+        proteinsPer100g = snap["proteinPer100g"] as? Double ?? 0.0
+        fatsPer100g = snap["fatsPer100g"] as? Double ?? 0.0
+    }
+    
+    func printProd() {
+        print("Nazwa: \(name)")
+        print("Producent: \(manufacturer)")
+        print("Kalorie: \(kcalPer100g)")
+        print("Wegle: \(carbsPer100g)")
+        print("Bialko: \(proteinsPer100g)")
+        print("Tluszcz: \(fatsPer100g)")
+        print("")
+    }
 }

@@ -13,8 +13,4 @@ class ActivityLevelsInfoViewController: UIViewController {
         super.viewDidLoad()
 
     }
-    
-    @IBAction func backToData(_ sender: Any) {
-    }
-    
 }
