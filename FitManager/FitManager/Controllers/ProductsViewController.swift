@@ -61,6 +61,22 @@ extension ProductsViewController: UITableViewDelegate {
         VC.product = product
         self.navigationController?.pushViewController(VC, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            productsTable.beginUpdates()
+            let toDelete = self.products[indexPath.row].location!
+            print(toDelete)
+            DB.child("Products/\(toDelete)").setValue(nil)
+            self.products.remove(at: indexPath.row)
+            productsTable.deleteRows(at: [indexPath], with: .fade)
+            productsTable.endUpdates()
+        }
+    }
 }
 
 extension ProductsViewController: UITableViewDataSource {

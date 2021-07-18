@@ -17,6 +17,7 @@ class Product {
     var proteinsPer100g: Double
     var fatsPer100g: Double
     var weight: Int? //Used when user provides how much of certain product he ate
+    var location: String? //Number of node in DB
     
     init(iName: String, iManu: String, iKcal: Double, iCarbs: Double, iProtein: Double, iFats: Double) {
         name = iName
@@ -44,6 +45,7 @@ class Product {
         carbsPer100g = snap["carbsPer100g"] as? Double ?? 0.0
         proteinsPer100g = snap["proteinPer100g"] as? Double ?? 0.0
         fatsPer100g = snap["fatsPer100g"] as? Double ?? 0.0
+        location = snapshot.key
     }
     
     func printProd() {
@@ -53,6 +55,7 @@ class Product {
         print("Wegle: \(carbsPer100g)")
         print("Bialko: \(proteinsPer100g)")
         print("Tluszcz: \(fatsPer100g)")
+        print("Klucz: \(String(describing: location))")
         print("")
     }
 }
