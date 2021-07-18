@@ -24,6 +24,7 @@ class ProductsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         initTable()
+        
     }
     
 
@@ -35,7 +36,7 @@ class ProductsViewController: UIViewController {
     }
     
     func initTable() {
-        products = []
+        products.removeAll()
         DB.child("Products").observeSingleEvent(of: .value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let newProduct = Product(snapshot: child)
@@ -52,7 +53,14 @@ class ProductsViewController: UIViewController {
 
 extension ProductsViewController: UITableViewDelegate {
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        productsTable.deselectRow(at: indexPath, animated: true)
+        let product = products[indexPath.row]
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let VC = storyBoard.instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
+        VC.product = product
+        self.navigationController?.pushViewController(VC, animated: true)
+    }
 }
 
 extension ProductsViewController: UITableViewDataSource {

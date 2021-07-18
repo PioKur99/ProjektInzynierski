@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		244117CB26A402580002B927 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244117CA26A402580002B927 /* ProductDetailsViewController.swift */; };
 		244DF15C269189F10020CE9B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DF15B269189F10020CE9B /* Product.swift */; };
 		244DF15E26918B960020CE9B /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DF15D26918B960020CE9B /* Meal.swift */; };
 		244DF1602691985C0020CE9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 244DF15F2691985C0020CE9B /* GoogleService-Info.plist */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		244117CA26A402580002B927 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		244DF15B269189F10020CE9B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		244DF15D26918B960020CE9B /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		244DF15F2691985C0020CE9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				2450AD85268E1C420088164B /* LunchViewController.swift */,
 				2450AD87268E1C6D0088164B /* SupperViewController.swift */,
 				244DF1612691A2DF0020CE9B /* NewProductViewController.swift */,
+				244117CA26A402580002B927 /* ProductDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				247BECCC268A29E500BE18DE /* MyMealsViewController.swift in Sources */,
 				2450AD86268E1C420088164B /* LunchViewController.swift in Sources */,
 				244DF15C269189F10020CE9B /* Product.swift in Sources */,
+				244117CB26A402580002B927 /* ProductDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,6 +27,15 @@ class Product {
         fatsPer100g = iFats
     }
     
+    init() {
+        name = ""
+        manufacturer = ""
+        kcalPer100g = 0.0
+        carbsPer100g = 0.0
+        proteinsPer100g = 0.0
+        fatsPer100g = 0.0
+    }
+    
     init(snapshot: DataSnapshot) {
         let snap = snapshot.value as! NSDictionary
         name = snap["name"] as? String ?? ""
