@@ -48,6 +48,15 @@ class Product {
         location = snapshot.key
     }
     
+    func update(iName: String, iManu: String, iKcal: Double, iCarbs: Double, iProtein: Double, iFats: Double) {
+        name = iName
+        manufacturer = iManu
+        kcalPer100g = iKcal
+        carbsPer100g = iCarbs
+        proteinsPer100g = iProtein
+        fatsPer100g = iFats
+    }
+    
     func printProd() {
         print("Nazwa: \(name)")
         print("Producent: \(manufacturer)")
