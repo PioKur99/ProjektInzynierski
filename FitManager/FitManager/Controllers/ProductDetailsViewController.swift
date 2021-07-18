@@ -88,13 +88,6 @@ class ProductDetailsViewController: UIViewController {
         productCaloriesInput.placeholder = String(product.kcalPer100g)
         productNameInput.placeholder = product.name
         productManuInput.placeholder = product.manufacturer
-        
-        /*productFatInput.text = String(product.fatsPer100g)
-        productProteinInput.text = String(product.proteinsPer100g)
-        productCarbsInput.text = String(product.carbsPer100g)
-        productCaloriesInput.text = String(product.kcalPer100g)
-        productNameInput.text = product.name
-        productManuInput.text = product.manufacturer   <---- Causes some weird bug, which unables to change values*/
     }
     
     func goToDisplayMode() {
@@ -122,10 +115,17 @@ class ProductDetailsViewController: UIViewController {
         productNameLabel.text = product.name
         productManuLabel.text = product.manufacturer
         
+        productFatInput.text = String(product.fatsPer100g)
+        productProteinInput.text = String(product.proteinsPer100g)
+        productCarbsInput.text = String(product.carbsPer100g)
+        productCaloriesInput.text = String(product.kcalPer100g)
+        productNameInput.text = product.name
+        productManuInput.text = product.manufacturer
+        
     }
     
     func succesAlert() {
-        let alert = UIAlertController(title: "Zmiany zostały zaktualizowane pomyślnie",message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Zmiany zostały wprowadzone pomyślnie",message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Zamknij", style: .cancel)
         alert.addAction(action)
         present(alert, animated: true)
