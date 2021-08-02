@@ -41,12 +41,9 @@ class ProductsViewController: UIViewController {
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let newProduct = Product(snapshot: child)
                 self.products.append(newProduct)
+                self.productsTable.reloadData()
             }
         })
-        //Need to wait due to asynchronus data fetching
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.04) {
-            self.productsTable.reloadData()
-        }
     }
 }
 
