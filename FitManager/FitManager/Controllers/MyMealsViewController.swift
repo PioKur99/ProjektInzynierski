@@ -26,6 +26,10 @@ class MyMealsViewController: UIViewController {
                                                   "BK": 0, "BWW": 0, "BP": 0, "BF": 0,
                                                   "LK": 0, "LWW": 0, "LP": 0, "LF": 0,
                                                   "SK": 0, "SWW": 0, "SP": 0, "SF": 0,]
+    var caloriesSliderVal = 0.0
+    var carbsSliderVal = 0.0
+    var proteinSliderVal = 0.0
+    var fatSliderVal = 0.0
     
     @IBOutlet weak var BK: UILabel!
     @IBOutlet weak var BF: UILabel!
@@ -102,6 +106,10 @@ class MyMealsViewController: UIViewController {
     
     func updateBreakfastData() {
         breakfast.products.removeAll()
+         caloriesSliderVal = 0.0
+         carbsSliderVal = 0.0
+         proteinSliderVal = 0.0
+         fatSliderVal = 0.0
         DB.child("Breakfast").observeSingleEvent(of: .value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let newProduct = Product(snapshot: child)
@@ -110,6 +118,18 @@ class MyMealsViewController: UIViewController {
                 self.BWW.text = String(self.breakfast.getCarbsPerMeal())
                 self.BP.text = String(self.breakfast.getProteinPerMeal())
                 self.BF.text = String(self.breakfast.getFatsPerMeal())
+                self.DK.text = String(self.breakfast.getCaloriesPerMeal())
+                self.DWW.text = String(self.breakfast.getCarbsPerMeal())
+                self.DP.text = String(self.breakfast.getProteinPerMeal())
+                self.DF.text = String(self.breakfast.getFatsPerMeal())
+                self.caloriesSliderVal = self.breakfast.getCaloriesPerMeal()
+                self.carbsSliderVal = self.breakfast.getCarbsPerMeal()
+                self.proteinSliderVal = self.breakfast.getProteinPerMeal()
+                self.fatSliderVal = self.breakfast.getFatsPerMeal()
+                self.caloriesSlider.value = Float(self.caloriesSliderVal)
+                self.carbsSlider.value = Float(self.carbsSliderVal)
+                self.proteinSlider.value = Float(self.proteinSliderVal)
+                self.fatSlider.value = Float(self.fatSliderVal)
             }
         })
     }
