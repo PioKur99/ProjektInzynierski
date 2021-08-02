@@ -54,6 +54,29 @@ class BreakfastViewController: UIViewController {
 
 extension BreakfastViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            breakfastTable.beginUpdates()
+            let toDelete = self.meal.products[indexPath.row].location!
+            print(toDelete)
+            DB.child("Breakfast/\(toDelete)").setValue(nil)
+            self.meal.products.remove(at: indexPath.row)
+            breakfastTable.deleteRows(at: [indexPath], with: .fade)
+            self.caloriesLabel.text = String(self.meal.getCaloriesPerMeal())
+            self.carbsLabel.text = String(self.meal.getCarbsPerMeal())
+            self.proteinLabel.text = String(self.meal.getProteinPerMeal())
+            self.fatLabel.text = String(self.meal.getFatsPerMeal())
+            breakfastTable.endUpdates()
+        }
+    }
+    
 }
 
 extension BreakfastViewController: UITableViewDataSource {

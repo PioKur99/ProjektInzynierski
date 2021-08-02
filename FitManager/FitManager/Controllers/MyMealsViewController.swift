@@ -19,7 +19,9 @@ import UIKit
 import Firebase
 
 class MyMealsViewController: UIViewController {
-   
+    
+    let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
+    var breakfast = Meal()
     var macronutrientsDictionary: [String:Int] = ["DK": 0, "DWW": 0, "DP": 0, "DF": 0,
                                                   "BK": 0, "BWW": 0, "BP": 0, "BF": 0,
                                                   "LK": 0, "LWW": 0, "LP": 0, "LF": 0,
@@ -71,6 +73,7 @@ class MyMealsViewController: UIViewController {
             fatLimitLabel.text = BMRValues[5]
             
         }
+        updateMealsData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -91,5 +94,23 @@ class MyMealsViewController: UIViewController {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "SupperViewController")
         self.navigationController?.pushViewController(resultViewController, animated: true)
+    }
+    
+    func updateMealsData() {
+      updateBreakfastData()
+    }
+    
+    func updateBreakfastData() {
+        breakfast.products.removeAll()
+        DB.child("Breakfast").observeSingleEvent(of: .value, with: {snapshot in
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                let newProduct = Product(snapshot: child)
+                self.breakfast.products.append(newProduct)
+                self.BK.text = String(self.breakfast.getCaloriesPerMeal())
+                self.BWW.text = String(self.breakfast.getCarbsPerMeal())
+                self.BP.text = String(self.breakfast.getProteinPerMeal())
+                self.BF.text = String(self.breakfast.getFatsPerMeal())
+            }
+        })
     }
 }
