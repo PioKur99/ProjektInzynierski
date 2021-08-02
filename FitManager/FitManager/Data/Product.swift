@@ -16,7 +16,7 @@ class Product {
     var carbsPer100g: Double
     var proteinsPer100g: Double
     var fatsPer100g: Double
-    var weight: Int? //Used when user provides how much of certain product he ate
+    var weight: Double? //Used when user provides how much of certain product he ate
     var location: String? //Number of node in DB
     
     init(iName: String, iManu: String, iKcal: Double, iCarbs: Double, iProtein: Double, iFats: Double) {

@@ -22,7 +22,7 @@ class BreakfastViewController: UIViewController {
     @IBAction func addProductPress(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "AddProdToMealViewController") as! AddProdToMealViewController
-        resultViewController.whichMeal = "Breakfast"
+        resultViewController.whichMeal = "Breakfast/"
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     

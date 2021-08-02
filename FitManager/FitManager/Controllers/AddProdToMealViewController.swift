@@ -39,6 +39,16 @@ class AddProdToMealViewController: UIViewController {
 
 extension AddProdToMealViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        productsTable.deselectRow(at: indexPath, animated: true)
+        let product = products[indexPath.row]
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let VC = storyBoard.instantiateViewController(withIdentifier: "ProdToMealViewController") as! ProdToMealViewController
+        VC.whichMeal = "Breakfast/"
+        VC.product = product
+        self.navigationController?.pushViewController(VC, animated: true)
+    }
+    
 }
 
 extension AddProdToMealViewController: UITableViewDataSource {
