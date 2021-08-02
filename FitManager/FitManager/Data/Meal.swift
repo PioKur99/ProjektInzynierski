@@ -14,14 +14,14 @@ class Meal {
         products = []
     }
     
+    
     func getCaloriesPerMeal() -> Double {
         var kcalPerMeal: Double = 0.0
         
         for product in products {
             kcalPerMeal += (product.kcalPer100g * Double(product.weight!)) / 100
         }
-        
-        return kcalPerMeal
+        return Double(round(10*kcalPerMeal)/10)
     }
     
     func getCarbsPerMeal() -> Double {
@@ -31,7 +31,7 @@ class Meal {
             carbsPerMeal += (product.carbsPer100g * Double(product.weight!)) / 100
         }
         
-        return carbsPerMeal
+        return Double(round(10*carbsPerMeal)/10)
     }
     
     func getProteinPerMeal() -> Double {
@@ -40,8 +40,8 @@ class Meal {
         for product in products {
             proteinsPerMeal += (product.proteinsPer100g * Double(product.weight!)) / 100
         }
-        
-        return proteinsPerMeal
+
+        return Double(round(10*proteinsPerMeal)/10)
     }
     
     func getFatsPerMeal() -> Double {
@@ -51,6 +51,7 @@ class Meal {
             fatsPerMeal += (product.fatsPer100g * Double(product.weight!)) / 100
         }
         
-        return fatsPerMeal
+        return Double(round(10*fatsPerMeal)/10)
     }
 }
+

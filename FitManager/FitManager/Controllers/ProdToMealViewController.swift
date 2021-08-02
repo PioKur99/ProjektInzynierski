@@ -53,9 +53,25 @@ class ProdToMealViewController: UIViewController {
             ])
             productID += 1
             UserDefaults.standard.setValue(productID, forKey: "ProductID")
+            succesAlert()
         }
         else {
-            print("test")
+            missingDataAlert()
         }
+    }
+    
+    func missingDataAlert() {
+        let alert = UIAlertController(title: "Nie udało się dodać produktu", message: "Upewnij się, że gramatura produktu posiada niezerową wartość.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Zamknij", style: .cancel)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+    
+    func succesAlert() {
+        let alert = UIAlertController(title: "Produkt został dodany pomyślnie",message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Zamknij", style: .cancel)
+        alert.addAction(action)
+        present(alert, animated: true)
+        
     }
 }

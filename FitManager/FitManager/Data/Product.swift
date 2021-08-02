@@ -45,6 +45,7 @@ class Product {
         carbsPer100g = snap["carbsPer100g"] as? Double ?? 0.0
         proteinsPer100g = snap["proteinPer100g"] as? Double ?? 0.0
         fatsPer100g = snap["fatsPer100g"] as? Double ?? 0.0
+        weight = snap["quantity"] as? Double ?? 0.0
         location = snapshot.key
     }
     
@@ -65,6 +66,7 @@ class Product {
         print("Bialko: \(proteinsPer100g)")
         print("Tluszcz: \(fatsPer100g)")
         print("Klucz: \(String(describing: location))")
+        print("Waga: \(String(describing: weight))")
         print("")
     }
 }
