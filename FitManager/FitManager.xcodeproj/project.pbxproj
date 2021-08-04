@@ -14,9 +14,7 @@
 		244DF15E26918B960020CE9B /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DF15D26918B960020CE9B /* Meal.swift */; };
 		244DF1602691985C0020CE9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 244DF15F2691985C0020CE9B /* GoogleService-Info.plist */; };
 		244DF1622691A2DF0020CE9B /* NewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DF1612691A2DF0020CE9B /* NewProductViewController.swift */; };
-		2450AD84268E1C2F0088164B /* BreakfastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2450AD83268E1C2F0088164B /* BreakfastViewController.swift */; };
-		2450AD86268E1C420088164B /* LunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2450AD85268E1C420088164B /* LunchViewController.swift */; };
-		2450AD88268E1C6D0088164B /* SupperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2450AD87268E1C6D0088164B /* SupperViewController.swift */; };
+		2450AD84268E1C2F0088164B /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2450AD83268E1C2F0088164B /* MealViewController.swift */; };
 		247BECB3268A150600BE18DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BECB2268A150600BE18DE /* AppDelegate.swift */; };
 		247BECB5268A150600BE18DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BECB4268A150600BE18DE /* SceneDelegate.swift */; };
 		247BECBA268A150600BE18DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247BECB8268A150600BE18DE /* Main.storyboard */; };
@@ -40,9 +38,7 @@
 		244DF15D26918B960020CE9B /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		244DF15F2691985C0020CE9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		244DF1612691A2DF0020CE9B /* NewProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProductViewController.swift; sourceTree = "<group>"; };
-		2450AD83268E1C2F0088164B /* BreakfastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakfastViewController.swift; sourceTree = "<group>"; };
-		2450AD85268E1C420088164B /* LunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchViewController.swift; sourceTree = "<group>"; };
-		2450AD87268E1C6D0088164B /* SupperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupperViewController.swift; sourceTree = "<group>"; };
+		2450AD83268E1C2F0088164B /* MealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		247BECAF268A150600BE18DE /* FitManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		247BECB2268A150600BE18DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		247BECB4268A150600BE18DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,9 +113,7 @@
 				247BECCD268A2A0100BE18DE /* ProductsViewController.swift */,
 				247BECCF268A2C9600BE18DE /* TabBarViewController.swift */,
 				24AEB7C3268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift */,
-				2450AD83268E1C2F0088164B /* BreakfastViewController.swift */,
-				2450AD85268E1C420088164B /* LunchViewController.swift */,
-				2450AD87268E1C6D0088164B /* SupperViewController.swift */,
+				2450AD83268E1C2F0088164B /* MealViewController.swift */,
 				244DF1612691A2DF0020CE9B /* NewProductViewController.swift */,
 				244117CA26A402580002B927 /* ProductDetailsViewController.swift */,
 				2402CC2D26B819F100B34227 /* AddProdToMealViewController.swift */,
@@ -276,16 +270,14 @@
 				244DF1622691A2DF0020CE9B /* NewProductViewController.swift in Sources */,
 				247BECBD268A150600BE18DE /* FitManager.xcdatamodeld in Sources */,
 				2402CC2E26B819F100B34227 /* AddProdToMealViewController.swift in Sources */,
-				2450AD88268E1C6D0088164B /* SupperViewController.swift in Sources */,
 				2402CC3026B8321500B34227 /* ProdToMealViewController.swift in Sources */,
 				247BECB3268A150600BE18DE /* AppDelegate.swift in Sources */,
 				247BECD0268A2C9700BE18DE /* TabBarViewController.swift in Sources */,
 				24AEB7C4268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift in Sources */,
-				2450AD84268E1C2F0088164B /* BreakfastViewController.swift in Sources */,
+				2450AD84268E1C2F0088164B /* MealViewController.swift in Sources */,
 				24AEB7C2268AFE6C0018E7B4 /* BMR.swift in Sources */,
 				247BECB5268A150600BE18DE /* SceneDelegate.swift in Sources */,
 				247BECCC268A29E500BE18DE /* MyMealsViewController.swift in Sources */,
-				2450AD86268E1C420088164B /* LunchViewController.swift in Sources */,
 				244DF15C269189F10020CE9B /* Product.swift in Sources */,
 				244117CB26A402580002B927 /* ProductDetailsViewController.swift in Sources */,
 			);

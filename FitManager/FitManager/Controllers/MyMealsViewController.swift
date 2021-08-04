@@ -22,10 +22,8 @@ class MyMealsViewController: UIViewController {
     
     let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
     var breakfast = Meal()
-    var macronutrientsDictionary: [String:Int] = ["DK": 0, "DWW": 0, "DP": 0, "DF": 0,
-                                                  "BK": 0, "BWW": 0, "BP": 0, "BF": 0,
-                                                  "LK": 0, "LWW": 0, "LP": 0, "LF": 0,
-                                                  "SK": 0, "SWW": 0, "SP": 0, "SF": 0,]
+    var lunch = Meal()
+    var dinner = Meal()
     var caloriesSliderVal = 0.0
     var carbsSliderVal = 0.0
     var proteinSliderVal = 0.0
@@ -86,22 +84,27 @@ class MyMealsViewController: UIViewController {
     
     @IBAction func navigateToBreakfast(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "BreakfastViewController")
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
+        resultViewController.whichMeal = "Breakfast"
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     @IBAction func navigateToLunch(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "LunchViewController")
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
+        resultViewController.whichMeal = "Lunch"
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     @IBAction func navigateToSupper(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "SupperViewController")
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
+        resultViewController.whichMeal = "Dinner"
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
     func updateMealsData() {
-      updateBreakfastData()
+        updateBreakfastData()
+        updateLunchData()
+        updateDinnerData()
     }
     
     func updateBreakfastData() {
@@ -118,6 +121,66 @@ class MyMealsViewController: UIViewController {
                 self.BWW.text = String(self.breakfast.getCarbsPerMeal())
                 self.BP.text = String(self.breakfast.getProteinPerMeal())
                 self.BF.text = String(self.breakfast.getFatsPerMeal())
+                self.DK.text = String(self.breakfast.getCaloriesPerMeal())
+                self.DWW.text = String(self.breakfast.getCarbsPerMeal())
+                self.DP.text = String(self.breakfast.getProteinPerMeal())
+                self.DF.text = String(self.breakfast.getFatsPerMeal())
+                self.caloriesSliderVal = self.breakfast.getCaloriesPerMeal()
+                self.carbsSliderVal = self.breakfast.getCarbsPerMeal()
+                self.proteinSliderVal = self.breakfast.getProteinPerMeal()
+                self.fatSliderVal = self.breakfast.getFatsPerMeal()
+                self.caloriesSlider.value = Float(self.caloriesSliderVal)
+                self.carbsSlider.value = Float(self.carbsSliderVal)
+                self.proteinSlider.value = Float(self.proteinSliderVal)
+                self.fatSlider.value = Float(self.fatSliderVal)
+            }
+        })
+    }
+    
+    func updateLunchData() {
+        lunch.products.removeAll()
+         caloriesSliderVal = 0.0
+         carbsSliderVal = 0.0
+         proteinSliderVal = 0.0
+         fatSliderVal = 0.0
+        DB.child("Lunch").observeSingleEvent(of: .value, with: {snapshot in
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                let newProduct = Product(snapshot: child)
+                self.lunch.products.append(newProduct)
+                self.LK.text = String(self.lunch.getCaloriesPerMeal())
+                self.LWW.text = String(self.lunch.getCarbsPerMeal())
+                self.LP.text = String(self.lunch.getProteinPerMeal())
+                self.LF.text = String(self.lunch.getFatsPerMeal())
+                self.DK.text = String(self.breakfast.getCaloriesPerMeal())
+                self.DWW.text = String(self.breakfast.getCarbsPerMeal())
+                self.DP.text = String(self.breakfast.getProteinPerMeal())
+                self.DF.text = String(self.breakfast.getFatsPerMeal())
+                self.caloriesSliderVal = self.breakfast.getCaloriesPerMeal()
+                self.carbsSliderVal = self.breakfast.getCarbsPerMeal()
+                self.proteinSliderVal = self.breakfast.getProteinPerMeal()
+                self.fatSliderVal = self.breakfast.getFatsPerMeal()
+                self.caloriesSlider.value = Float(self.caloriesSliderVal)
+                self.carbsSlider.value = Float(self.carbsSliderVal)
+                self.proteinSlider.value = Float(self.proteinSliderVal)
+                self.fatSlider.value = Float(self.fatSliderVal)
+            }
+        })
+    }
+    
+    func updateDinnerData() {
+        dinner.products.removeAll()
+         caloriesSliderVal = 0.0
+         carbsSliderVal = 0.0
+         proteinSliderVal = 0.0
+         fatSliderVal = 0.0
+        DB.child("Dinner").observeSingleEvent(of: .value, with: {snapshot in
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                let newProduct = Product(snapshot: child)
+                self.dinner.products.append(newProduct)
+                self.SK.text = String(self.dinner.getCaloriesPerMeal())
+                self.SWW.text = String(self.dinner.getCarbsPerMeal())
+                self.SP.text = String(self.dinner.getProteinPerMeal())
+                self.SF.text = String(self.dinner.getFatsPerMeal())
                 self.DK.text = String(self.breakfast.getCaloriesPerMeal())
                 self.DWW.text = String(self.breakfast.getCarbsPerMeal())
                 self.DP.text = String(self.breakfast.getProteinPerMeal())

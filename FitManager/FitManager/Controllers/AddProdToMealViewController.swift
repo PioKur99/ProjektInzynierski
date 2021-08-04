@@ -65,7 +65,7 @@ extension AddProdToMealViewController: UITableViewDelegate {
         let product = currentProducts[indexPath.row]
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let VC = storyBoard.instantiateViewController(withIdentifier: "ProdToMealViewController") as! ProdToMealViewController
-        VC.whichMeal = "Breakfast/"
+        VC.whichMeal = whichMeal
         VC.product = product
         self.navigationController?.pushViewController(VC, animated: true)
     }

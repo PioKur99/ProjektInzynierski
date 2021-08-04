@@ -1,5 +1,5 @@
 //
-//  BreakfastViewController.swift
+//  MealViewController.swift
 //  FitManager
 //
 //  Created by Piotr Kurda on 01/07/2021.
@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class BreakfastViewController: UIViewController {
+class MealViewController: UIViewController {
     @IBOutlet weak var breakfastTable: UITableView!
     @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var carbsLabel: UILabel!
@@ -16,6 +16,7 @@ class BreakfastViewController: UIViewController {
     @IBOutlet weak var fatLabel: UILabel!
     
     var meal = Meal()
+    var whichMeal = ""
     let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
     
     override func viewDidLoad() {
@@ -32,13 +33,13 @@ class BreakfastViewController: UIViewController {
     @IBAction func addProductPress(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "AddProdToMealViewController") as! AddProdToMealViewController
-        resultViewController.whichMeal = "Breakfast/"
+        resultViewController.whichMeal = whichMeal + "/"
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
     func initTable() {
         meal.products.removeAll()
-        DB.child("Breakfast").observeSingleEvent(of: .value, with: {snapshot in
+        DB.child(whichMeal).observeSingleEvent(of: .value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let newProduct = Product(snapshot: child)
                 self.meal.products.append(newProduct)
@@ -52,7 +53,7 @@ class BreakfastViewController: UIViewController {
     }
 }
 
-extension BreakfastViewController: UITableViewDelegate {
+extension MealViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
@@ -66,7 +67,7 @@ extension BreakfastViewController: UITableViewDelegate {
             breakfastTable.beginUpdates()
             let toDelete = self.meal.products[indexPath.row].location!
             print(toDelete)
-            DB.child("Breakfast/\(toDelete)").setValue(nil)
+            DB.child(whichMeal + "/\(toDelete)").setValue(nil)
             self.meal.products.remove(at: indexPath.row)
             breakfastTable.deleteRows(at: [indexPath], with: .fade)
             self.caloriesLabel.text = String(self.meal.getCaloriesPerMeal())
@@ -79,7 +80,7 @@ extension BreakfastViewController: UITableViewDelegate {
     
 }
 
-extension BreakfastViewController: UITableViewDataSource {
+extension MealViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.meal.products.count
