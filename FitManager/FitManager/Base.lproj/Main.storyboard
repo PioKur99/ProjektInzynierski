@@ -539,6 +539,9 @@
                                 <state key="normal" title="Nowy dzień">
                                     <color key="titleColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="newDayPress:" destination="bTd-j3-ekG" eventType="touchUpInside" id="PGr-ns-SUq"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kcal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZa-6E-zKi">
                                 <rect key="frame" x="20" y="154" width="37" height="21"/>

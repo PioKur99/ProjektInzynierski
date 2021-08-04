@@ -82,6 +82,14 @@ class MyMealsViewController: UIViewController {
         viewDidLoad()
     }
     
+    @IBAction func newDayPress(_ sender: Any) {
+        resetBreakfastData()
+        resetLunchData()
+        resetDinnerData()
+        resetDayData()
+    }
+    
+    
     @IBAction func navigateToBreakfast(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
@@ -195,5 +203,44 @@ class MyMealsViewController: UIViewController {
                 self.fatSlider.value = Float(self.fatSliderVal)
             }
         })
+    }
+    
+    func resetBreakfastData() {
+        DB.child("Breakfast").setValue(nil)
+        breakfast.products.removeAll()
+        self.BK.text = String(self.breakfast.getCaloriesPerMeal())
+        self.BWW.text = String(self.breakfast.getCarbsPerMeal())
+        self.BP.text = String(self.breakfast.getProteinPerMeal())
+        self.BF.text = String(self.breakfast.getFatsPerMeal())
+    }
+    func resetLunchData() {
+        DB.child("Lunch").setValue(nil)
+        lunch.products.removeAll()
+        self.LK.text = String(self.lunch.getCaloriesPerMeal())
+        self.LWW.text = String(self.lunch.getCarbsPerMeal())
+        self.LP.text = String(self.lunch.getProteinPerMeal())
+        self.LF.text = String(self.lunch.getFatsPerMeal())
+    }
+    func resetDinnerData() {
+        DB.child("Dinner").setValue(nil)
+        dinner.products.removeAll()
+        self.SK.text = String(self.dinner.getCaloriesPerMeal())
+        self.SWW.text = String(self.dinner.getCarbsPerMeal())
+        self.SP.text = String(self.dinner.getProteinPerMeal())
+        self.SF.text = String(self.dinner.getFatsPerMeal())
+    }
+    func resetDayData() {
+        self.DK.text = String(self.breakfast.getCaloriesPerMeal())
+        self.DWW.text = String(self.breakfast.getCarbsPerMeal())
+        self.DP.text = String(self.breakfast.getProteinPerMeal())
+        self.DF.text = String(self.breakfast.getFatsPerMeal())
+        self.caloriesSliderVal = self.breakfast.getCaloriesPerMeal()
+        self.carbsSliderVal = self.breakfast.getCarbsPerMeal()
+        self.proteinSliderVal = self.breakfast.getProteinPerMeal()
+        self.fatSliderVal = self.breakfast.getFatsPerMeal()
+        self.caloriesSlider.value = Float(self.caloriesSliderVal)
+        self.carbsSlider.value = Float(self.carbsSliderVal)
+        self.proteinSlider.value = Float(self.proteinSliderVal)
+        self.fatSlider.value = Float(self.fatSliderVal)
     }
 }
