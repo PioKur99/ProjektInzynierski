@@ -24,10 +24,6 @@ class MyMealsViewController: UIViewController {
     var breakfast = Meal()
     var lunch = Meal()
     var dinner = Meal()
-    var caloriesSliderVal = 0.0
-    var carbsSliderVal = 0.0
-    var proteinSliderVal = 0.0
-    var fatSliderVal = 0.0
     
     @IBOutlet weak var BK: UILabel!
     @IBOutlet weak var BF: UILabel!
@@ -113,15 +109,20 @@ class MyMealsViewController: UIViewController {
         updateBreakfastData()
         updateLunchData()
         updateDinnerData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.updateDayData()
+        }
     }
     
     func updateBreakfastData() {
         breakfast.products.removeAll()
-         caloriesSliderVal = 0.0
-         carbsSliderVal = 0.0
-         proteinSliderVal = 0.0
-         fatSliderVal = 0.0
         DB.child("Breakfast").observeSingleEvent(of: .value, with: {snapshot in
+            if(!snapshot.hasChildren()) {
+                self.BK.text = "0.0"
+                self.BWW.text = "0.0"
+                self.BP.text = "0.0"
+                self.BF.text = "0.0"
+            }
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let newProduct = Product(snapshot: child)
                 self.breakfast.products.append(newProduct)
@@ -129,29 +130,19 @@ class MyMealsViewController: UIViewController {
                 self.BWW.text = String(self.breakfast.getCarbsPerMeal())
                 self.BP.text = String(self.breakfast.getProteinPerMeal())
                 self.BF.text = String(self.breakfast.getFatsPerMeal())
-                self.DK.text = String(self.breakfast.getCaloriesPerMeal())
-                self.DWW.text = String(self.breakfast.getCarbsPerMeal())
-                self.DP.text = String(self.breakfast.getProteinPerMeal())
-                self.DF.text = String(self.breakfast.getFatsPerMeal())
-                self.caloriesSliderVal = self.breakfast.getCaloriesPerMeal()
-                self.carbsSliderVal = self.breakfast.getCarbsPerMeal()
-                self.proteinSliderVal = self.breakfast.getProteinPerMeal()
-                self.fatSliderVal = self.breakfast.getFatsPerMeal()
-                self.caloriesSlider.value = Float(self.caloriesSliderVal)
-                self.carbsSlider.value = Float(self.carbsSliderVal)
-                self.proteinSlider.value = Float(self.proteinSliderVal)
-                self.fatSlider.value = Float(self.fatSliderVal)
             }
         })
     }
     
     func updateLunchData() {
         lunch.products.removeAll()
-         caloriesSliderVal = 0.0
-         carbsSliderVal = 0.0
-         proteinSliderVal = 0.0
-         fatSliderVal = 0.0
         DB.child("Lunch").observeSingleEvent(of: .value, with: {snapshot in
+            if(!snapshot.hasChildren()) {
+                self.LK.text = "0.0"
+                self.LWW.text = "0.0"
+                self.LP.text = "0.0"
+                self.LF.text = "0.0"
+            }
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let newProduct = Product(snapshot: child)
                 self.lunch.products.append(newProduct)
@@ -159,29 +150,19 @@ class MyMealsViewController: UIViewController {
                 self.LWW.text = String(self.lunch.getCarbsPerMeal())
                 self.LP.text = String(self.lunch.getProteinPerMeal())
                 self.LF.text = String(self.lunch.getFatsPerMeal())
-                self.DK.text = String(self.breakfast.getCaloriesPerMeal())
-                self.DWW.text = String(self.breakfast.getCarbsPerMeal())
-                self.DP.text = String(self.breakfast.getProteinPerMeal())
-                self.DF.text = String(self.breakfast.getFatsPerMeal())
-                self.caloriesSliderVal = self.breakfast.getCaloriesPerMeal()
-                self.carbsSliderVal = self.breakfast.getCarbsPerMeal()
-                self.proteinSliderVal = self.breakfast.getProteinPerMeal()
-                self.fatSliderVal = self.breakfast.getFatsPerMeal()
-                self.caloriesSlider.value = Float(self.caloriesSliderVal)
-                self.carbsSlider.value = Float(self.carbsSliderVal)
-                self.proteinSlider.value = Float(self.proteinSliderVal)
-                self.fatSlider.value = Float(self.fatSliderVal)
             }
         })
     }
     
     func updateDinnerData() {
         dinner.products.removeAll()
-         caloriesSliderVal = 0.0
-         carbsSliderVal = 0.0
-         proteinSliderVal = 0.0
-         fatSliderVal = 0.0
         DB.child("Dinner").observeSingleEvent(of: .value, with: {snapshot in
+            if(!snapshot.hasChildren()) {
+                self.SK.text = "0.0"
+                self.SWW.text = "0.0"
+                self.SP.text = "0.0"
+                self.SF.text = "0.0"
+            }
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let newProduct = Product(snapshot: child)
                 self.dinner.products.append(newProduct)
@@ -189,20 +170,27 @@ class MyMealsViewController: UIViewController {
                 self.SWW.text = String(self.dinner.getCarbsPerMeal())
                 self.SP.text = String(self.dinner.getProteinPerMeal())
                 self.SF.text = String(self.dinner.getFatsPerMeal())
-                self.DK.text = String(self.breakfast.getCaloriesPerMeal())
-                self.DWW.text = String(self.breakfast.getCarbsPerMeal())
-                self.DP.text = String(self.breakfast.getProteinPerMeal())
-                self.DF.text = String(self.breakfast.getFatsPerMeal())
-                self.caloriesSliderVal = self.breakfast.getCaloriesPerMeal()
-                self.carbsSliderVal = self.breakfast.getCarbsPerMeal()
-                self.proteinSliderVal = self.breakfast.getProteinPerMeal()
-                self.fatSliderVal = self.breakfast.getFatsPerMeal()
-                self.caloriesSlider.value = Float(self.caloriesSliderVal)
-                self.carbsSlider.value = Float(self.carbsSliderVal)
-                self.proteinSlider.value = Float(self.proteinSliderVal)
-                self.fatSlider.value = Float(self.fatSliderVal)
             }
         })
+    }
+    
+    func updateDayData() {
+        var DK = self.breakfast.getCaloriesPerMeal() + self.lunch.getCaloriesPerMeal() + self.dinner.getCaloriesPerMeal()
+        var DWW = self.breakfast.getCarbsPerMeal() + self.lunch.getCarbsPerMeal() + self.dinner.getCarbsPerMeal()
+        var DP = self.breakfast.getProteinPerMeal() + self.lunch.getProteinPerMeal() + self.dinner.getProteinPerMeal()
+        var DF = self.breakfast.getFatsPerMeal() + self.lunch.getFatsPerMeal() + self.dinner.getFatsPerMeal()
+        DK = round(10*DK)/10
+        DWW = round(10*DWW)/10
+        DP = round(10*DP)/10
+        DF = round(10*DF)/10
+        self.DK.text = String(DK)
+        self.DWW.text = String(DWW)
+        self.DP.text = String(DP)
+        self.DF.text = String(DF)
+        self.caloriesSlider.value = Float(DK)
+        self.carbsSlider.value = Float(DWW)
+        self.proteinSlider.value = Float(DP)
+        self.fatSlider.value = Float(DF)
     }
     
     func resetBreakfastData() {
@@ -230,17 +218,13 @@ class MyMealsViewController: UIViewController {
         self.SF.text = String(self.dinner.getFatsPerMeal())
     }
     func resetDayData() {
-        self.DK.text = String(self.breakfast.getCaloriesPerMeal())
-        self.DWW.text = String(self.breakfast.getCarbsPerMeal())
-        self.DP.text = String(self.breakfast.getProteinPerMeal())
-        self.DF.text = String(self.breakfast.getFatsPerMeal())
-        self.caloriesSliderVal = self.breakfast.getCaloriesPerMeal()
-        self.carbsSliderVal = self.breakfast.getCarbsPerMeal()
-        self.proteinSliderVal = self.breakfast.getProteinPerMeal()
-        self.fatSliderVal = self.breakfast.getFatsPerMeal()
-        self.caloriesSlider.value = Float(self.caloriesSliderVal)
-        self.carbsSlider.value = Float(self.carbsSliderVal)
-        self.proteinSlider.value = Float(self.proteinSliderVal)
-        self.fatSlider.value = Float(self.fatSliderVal)
+        self.DK.text = ""
+        self.DWW.text = ""
+        self.DP.text = ""
+        self.DF.text = ""
+        self.caloriesSlider.value = Float(0)
+        self.carbsSlider.value = Float(0)
+        self.proteinSlider.value = Float(0)
+        self.fatSlider.value = Float(0)
     }
 }
