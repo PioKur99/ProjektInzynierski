@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2402CC2E26B819F100B34227 /* AddProdToMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402CC2D26B819F100B34227 /* AddProdToMealViewController.swift */; };
 		2402CC3026B8321500B34227 /* ProdToMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402CC2F26B8321500B34227 /* ProdToMealViewController.swift */; };
+		2416E4B626BD948200A04337 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416E4B526BD948200A04337 /* StatsViewController.swift */; };
 		244117CB26A402580002B927 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244117CA26A402580002B927 /* ProductDetailsViewController.swift */; };
 		244DF15C269189F10020CE9B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DF15B269189F10020CE9B /* Product.swift */; };
 		244DF15E26918B960020CE9B /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DF15D26918B960020CE9B /* Meal.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		2402CC2D26B819F100B34227 /* AddProdToMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProdToMealViewController.swift; sourceTree = "<group>"; };
 		2402CC2F26B8321500B34227 /* ProdToMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdToMealViewController.swift; sourceTree = "<group>"; };
+		2416E4B526BD948200A04337 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		244117CA26A402580002B927 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		244DF15B269189F10020CE9B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		244DF15D26918B960020CE9B /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				244117CA26A402580002B927 /* ProductDetailsViewController.swift */,
 				2402CC2D26B819F100B34227 /* AddProdToMealViewController.swift */,
 				2402CC2F26B8321500B34227 /* ProdToMealViewController.swift */,
+				2416E4B526BD948200A04337 /* StatsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				247BECD0268A2C9700BE18DE /* TabBarViewController.swift in Sources */,
 				24AEB7C4268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift in Sources */,
 				2450AD84268E1C2F0088164B /* MealViewController.swift in Sources */,
+				2416E4B626BD948200A04337 /* StatsViewController.swift in Sources */,
 				24AEB7C2268AFE6C0018E7B4 /* BMR.swift in Sources */,
 				247BECB5268A150600BE18DE /* SceneDelegate.swift in Sources */,
 				247BECCC268A29E500BE18DE /* MyMealsViewController.swift in Sources */,

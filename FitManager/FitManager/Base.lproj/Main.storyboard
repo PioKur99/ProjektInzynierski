@@ -238,7 +238,7 @@
             </objects>
             <point key="canvasLocation" x="-1994.2028985507247" y="1801.6304347826087"/>
         </scene>
-        <!--Moje dane-->
+        <!--Moje Dane-->
         <scene sceneID="AdM-1h-lZi">
             <objects>
                 <viewController id="Qg6-1Z-0Fk" customClass="MyDataViewController" customModule="FitManager" customModuleProvider="target" sceneMemberID="viewController">
@@ -405,7 +405,9 @@
                     <tabBarItem key="tabBarItem" title="Moje dane" image="person.circle" catalog="system" selectedImage="person.circle" id="45c-hr-Bvn">
                         <color key="badgeColor" systemColor="systemYellowColor"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" id="Ch5-eW-jWz"/>
+                    <navigationItem key="navigationItem" title="Moje Dane" id="Ch5-eW-jWz">
+                        <barButtonItem key="backBarButtonItem" title="Powrót" id="dRZ-6p-n5E"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityLevelPicker" destination="7kQ-6g-iNA" id="V5k-do-q76"/>
                         <outlet property="ageInput" destination="8J8-lC-ZQt" id="eAK-rd-jsK"/>
@@ -427,7 +429,7 @@
             </objects>
             <point key="canvasLocation" x="-1994" y="1085"/>
         </scene>
-        <!--Moje posiłki-->
+        <!--Moje Posiłki-->
         <scene sceneID="Fs0-wC-Cng">
             <objects>
                 <viewController id="bTd-j3-ekG" customClass="MyMealsViewController" customModule="FitManager" customModuleProvider="target" sceneMemberID="viewController">
@@ -747,17 +749,6 @@
                                 <color key="textColor" red="0.20392156859999999" green="0.2470588235" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4L-2f-FmG">
-                                <rect key="frame" x="145" y="93" width="124" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Śniadanie">
-                                    <color key="titleColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="navigateToBreakfast:" destination="bTd-j3-ekG" eventType="touchUpInside" id="RDo-aO-b4Y"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tłuszcze" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcA-5j-k8V">
                                 <rect key="frame" x="280" y="615" width="59" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -779,13 +770,26 @@
                                 <color key="textColor" red="0.20392156859999999" green="0.2470588235" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4L-2f-FmG">
+                                <rect key="frame" x="145" y="101" width="124" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="Śniadanie">
+                                    <color key="titleColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="navigateToBreakfast:" destination="bTd-j3-ekG" eventType="touchUpInside" id="RDo-aO-b4Y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aVg-Va-alu"/>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.90196078431372551" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.63529411764705879" green="0.85882352941176465" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Moje posiłki" image="pencil" catalog="system" selectedImage="pencil" id="1PY-VI-UkP"/>
-                    <navigationItem key="navigationItem" id="wOr-MW-QJP"/>
+                    <navigationItem key="navigationItem" title="Moje Posiłki" id="wOr-MW-QJP">
+                        <barButtonItem key="backBarButtonItem" title="Powrót" id="Gac-fs-Z0N"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="BF" destination="E16-M9-PYU" id="lPg-dF-zN1"/>
                         <outlet property="BK" destination="fhp-f6-o1q" id="Bz2-Kv-jfI"/>
@@ -834,6 +838,7 @@
                         <segue destination="9p1-OU-D4N" kind="relationship" relationship="viewControllers" id="VAl-7s-dPY"/>
                         <segue destination="GQv-ol-KwH" kind="relationship" relationship="viewControllers" id="bOJ-OU-N8d"/>
                         <segue destination="nMi-Lv-Psx" kind="relationship" relationship="viewControllers" id="RzP-j3-c7K"/>
+                        <segue destination="HHn-bz-Cie" kind="relationship" relationship="viewControllers" id="1uQ-rZ-ibA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MyY-6e-oHw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -915,7 +920,9 @@
                         <color key="backgroundColor" red="0.96078431372549022" green="0.90196078431372551" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Produkty" image="list.bullet.rectangle" catalog="system" selectedImage="list.bullet.rectangle" id="mvX-Ms-3fT"/>
-                    <navigationItem key="navigationItem" id="N0S-lf-20r"/>
+                    <navigationItem key="navigationItem" title="Produkty" id="N0S-lf-20r">
+                        <barButtonItem key="backBarButtonItem" title="Powrót" id="Toa-q4-b3H"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="productSearchBar" destination="POk-er-h3U" id="Pot-sU-Wrs"/>
                         <outlet property="productsTable" destination="TC3-2l-I64" id="oPZ-Pe-Yk8"/>
@@ -1240,6 +1247,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.34509803919999998" green="0.23921568630000001" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="bTd-j3-ekG" kind="relationship" relationship="rootViewController" id="pAs-FT-AP9"/>
@@ -1259,6 +1269,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.34509803919999998" green="0.23921568630000001" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qt8-Cm-Bj1"/>
@@ -1454,8 +1467,48 @@
             </objects>
             <point key="canvasLocation" x="103" y="1802"/>
         </scene>
+        <!--Statystyki-->
+        <scene sceneID="8xo-k8-h24">
+            <objects>
+                <navigationController id="HHn-bz-Cie" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Statystyki" selectedImage="chart.bar.xaxis" catalog="system" id="vGA-GB-rQO"/>
+                    <navigationItem key="navigationItem" id="RnD-TJ-81A"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C3O-so-tVi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.34509803919999998" green="0.23921568630000001" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zkb-rY-EXO" kind="relationship" relationship="rootViewController" id="VIm-EG-pJX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="14O-os-33r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="103" y="-423"/>
+        </scene>
+        <!--Statystyki-->
+        <scene sceneID="Q8X-op-ZWS">
+            <objects>
+                <viewController id="zkb-rY-EXO" customClass="StatsViewController" customModule="FitManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Oty-Xi-mbe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="3yv-4T-B4m"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.90196078430000004" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Statystyki" id="w03-j0-3DW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oTh-FQ-yI8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1090" y="-423"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
