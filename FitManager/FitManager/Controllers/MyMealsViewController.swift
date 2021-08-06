@@ -21,6 +21,7 @@ import Firebase
 class MyMealsViewController: UIViewController {
     
     let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
+    var ID: Int = 0
     var breakfast = Meal()
     var lunch = Meal()
     var dinner = Meal()
@@ -71,6 +72,10 @@ class MyMealsViewController: UIViewController {
             fatLimitLabel.text = BMRValues[5]
             
         }
+        let tempID = UserDefaults.standard.object(forKey: "ProductID")
+        if let tmpID = tempID as? Int {
+            ID = tmpID
+        }
         updateMealsData()
     }
     
@@ -79,10 +84,10 @@ class MyMealsViewController: UIViewController {
     }
     
     @IBAction func newDayPress(_ sender: Any) {
+        resetDayData()
         resetBreakfastData()
         resetLunchData()
         resetDinnerData()
-        resetDayData()
     }
     
     
@@ -218,6 +223,11 @@ class MyMealsViewController: UIViewController {
         self.SF.text = String(self.dinner.getFatsPerMeal())
     }
     func resetDayData() {
+        var DK = self.breakfast.getCaloriesPerMeal() + self.lunch.getCaloriesPerMeal() + self.dinner.getCaloriesPerMeal()
+        DK = round(10*DK)/10
+        DB.child("History/\(ID)").setValue(["calories" : DK])
+        ID += 1
+        UserDefaults.standard.setValue(ID, forKey: "ProductID")
         self.DK.text = ""
         self.DWW.text = ""
         self.DP.text = ""
