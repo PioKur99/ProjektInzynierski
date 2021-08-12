@@ -225,9 +225,17 @@ class MyMealsViewController: UIViewController {
     func resetDayData() {
         var DK = self.breakfast.getCaloriesPerMeal() + self.lunch.getCaloriesPerMeal() + self.dinner.getCaloriesPerMeal()
         DK = round(10*DK)/10
-        DB.child("History/\(ID)").setValue(["calories" : DK])
+        
+        let currentDateTime = Date()
+        let userCalendar = Calendar.current
+        let requestedComponents: Set<Calendar.Component> = [.year, .month, .day]
+        let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
+        let currentDate = String(dateTimeComponents.day!) + "-" + String(dateTimeComponents.month!) + "-" + String(dateTimeComponents.year!)
+        
+        DB.child("History/\(ID)").setValue(["calories" : DK, "date" : currentDate])
         ID += 1
         UserDefaults.standard.setValue(ID, forKey: "ProductID")
+        
         self.DK.text = ""
         self.DWW.text = ""
         self.DP.text = ""
