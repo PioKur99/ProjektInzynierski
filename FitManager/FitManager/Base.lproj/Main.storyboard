@@ -1467,17 +1467,19 @@
             </objects>
             <point key="canvasLocation" x="103" y="1802"/>
         </scene>
-        <!--Statystyki-->
+        <!--Item-->
         <scene sceneID="8xo-k8-h24">
             <objects>
                 <navigationController id="HHn-bz-Cie" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Statystyki" selectedImage="chart.bar.xaxis" catalog="system" id="vGA-GB-rQO"/>
-                    <navigationItem key="navigationItem" id="RnD-TJ-81A"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="vGA-GB-rQO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="C3O-so-tVi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.34509803919999998" green="0.23921568630000001" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
@@ -1500,7 +1502,9 @@
                         <viewLayoutGuide key="safeArea" id="3yv-4T-B4m"/>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.90196078430000004" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Statystyki" image="chart.bar.xaxis" catalog="system" id="15c-1B-ILq"/>
                     <navigationItem key="navigationItem" title="Statystyki" id="w03-j0-3DW"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTh-FQ-yI8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
