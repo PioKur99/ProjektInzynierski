@@ -7,14 +7,18 @@
 
 import UIKit
 import Charts
+import FirebaseDatabase
 
 class StatsViewController: UIViewController, ChartViewDelegate {
     
     var statsChart = BarChartView()
+    var statsData: [HistoryItem] = []
+    let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         statsChart.delegate = self
+        initChartData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -29,6 +33,17 @@ class StatsViewController: UIViewController, ChartViewDelegate {
         ])
         let data = BarChartData(dataSet: set)
         statsChart.data = data
+    }
+    
+    func initChartData() {
+        statsData.removeAll()
+        DB.child("History").observeSingleEvent(of: .value, with: {snapshot in
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                let newEntry = HistoryItem(snapshot: child)
+                newEntry.printItem()
+                self.statsData.append(newEntry)
+            }
+        })
     }
 
 }

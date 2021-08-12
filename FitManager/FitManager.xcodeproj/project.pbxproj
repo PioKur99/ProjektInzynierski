@@ -26,6 +26,7 @@
 		247BECCC268A29E500BE18DE /* MyMealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BECCB268A29E500BE18DE /* MyMealsViewController.swift */; };
 		247BECCE268A2A0100BE18DE /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BECCD268A2A0100BE18DE /* ProductsViewController.swift */; };
 		247BECD0268A2C9700BE18DE /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BECCF268A2C9600BE18DE /* TabBarViewController.swift */; };
+		24A6319E26C547E1006CA5A2 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6319D26C547E1006CA5A2 /* HistoryItem.swift */; };
 		24AEB7C2268AFE6C0018E7B4 /* BMR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AEB7C1268AFE6C0018E7B4 /* BMR.swift */; };
 		24AEB7C4268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AEB7C3268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift */; };
 		D9853F7D3B37F27530766A90 /* Pods_FitManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F85E9AE5C21D329C0C78E5 /* Pods_FitManager.framework */; };
@@ -53,6 +54,7 @@
 		247BECCB268A29E500BE18DE /* MyMealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMealsViewController.swift; sourceTree = "<group>"; };
 		247BECCD268A2A0100BE18DE /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		247BECCF268A2C9600BE18DE /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		24A6319D26C547E1006CA5A2 /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		24AEB7C1268AFE6C0018E7B4 /* BMR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMR.swift; sourceTree = "<group>"; };
 		24AEB7C3268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevelsInfoViewController.swift; sourceTree = "<group>"; };
 		7792816F65B02D6B7F55273E /* Pods-FitManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitManager.release.xcconfig"; path = "Target Support Files/Pods-FitManager/Pods-FitManager.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				24AEB7C1268AFE6C0018E7B4 /* BMR.swift */,
 				244DF15B269189F10020CE9B /* Product.swift */,
 				244DF15D26918B960020CE9B /* Meal.swift */,
+				24A6319D26C547E1006CA5A2 /* HistoryItem.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				247BECD0268A2C9700BE18DE /* TabBarViewController.swift in Sources */,
 				24AEB7C4268B41F70018E7B4 /* ActivityLevelsInfoViewController.swift in Sources */,
 				2450AD84268E1C2F0088164B /* MealViewController.swift in Sources */,
+				24A6319E26C547E1006CA5A2 /* HistoryItem.swift in Sources */,
 				2416E4B626BD948200A04337 /* StatsViewController.swift in Sources */,
 				24AEB7C2268AFE6C0018E7B4 /* BMR.swift in Sources */,
 				247BECB5268A150600BE18DE /* SceneDelegate.swift in Sources */,
