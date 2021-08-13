@@ -21,6 +21,10 @@ class StatsViewController: UIViewController {
         initChartData()
     }
     
+    /*override func viewDidAppear(_ animated: Bool) {
+        initChartData()
+    }*/
+    
     func setUpChart() {
         barsArray.removeAll()
         let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0, to: 4000, by: 500))
@@ -28,7 +32,7 @@ class StatsViewController: UIViewController {
         for elem in statsData {
             barsArray.append((elem.date,elem.caloriesAmount))
         }
-        let chart = BarsChart(frame: sFrame, chartConfig: chartConfig, xTitle: "Dzień", yTitle: "Spożyte kalorie", bars: barsArray, color: UIColor.orange, barWidth: 10)
+        let chart = BarsChart(frame: sFrame, chartConfig: chartConfig, xTitle: "Dzień", yTitle: "Spożyte kalorie", bars: barsArray, color: UIColor.orange, barWidth: 30)
         self.view.addSubview(chart.view)
         self.chartView = chart
     }
