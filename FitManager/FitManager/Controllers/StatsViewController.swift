@@ -6,33 +6,32 @@
 //
 
 import UIKit
-import Charts
+import SwiftCharts
 import FirebaseDatabase
 
-class StatsViewController: UIViewController, ChartViewDelegate {
+class StatsViewController: UIViewController {
     
-    var statsChart = BarChartView()
+    var chartView: BarsChart!
     var statsData: [HistoryItem] = []
     let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        statsChart.delegate = self
+        //setUpChart()
         initChartData()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        statsChart.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width)
-        statsChart.center = view.center
-        view.addSubview(statsChart)
-        let set = BarChartDataSet(entries: [
-            BarChartDataEntry(x: 10.0, y: 20.0),
-            BarChartDataEntry(x: 15.0, y: 20.0),
-            BarChartDataEntry(x: 20.0, y: 20.0),
-        ])
-        let data = BarChartData(dataSet: set)
-        statsChart.data = data
+    func updateChartData() {
+
+    }
+    
+    func setUpChart() {
+        let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0, to: 4000, by: 500))
+        let sFrame = CGRect(x: 0, y: 130, width: self.view.frame.width, height: self.view.frame.width)
+        let barsArray = [(statsData[0].date,statsData[0].caloriesAmount),("Feb",110.8),("Mar",200),("Apr",310.6),("May",200),("Jun",410.5),("Jul",300)]
+        let chart = BarsChart(frame: sFrame, chartConfig: chartConfig, xTitle: "Dzień", yTitle: "Spożyte kalorie", bars: barsArray, color: UIColor.orange, barWidth: 40)
+        self.view.addSubview(chart.view)
+        self.chartView = chart
     }
     
     func initChartData() {
@@ -42,6 +41,7 @@ class StatsViewController: UIViewController, ChartViewDelegate {
                 let newEntry = HistoryItem(snapshot: child)
                 newEntry.printItem()
                 self.statsData.append(newEntry)
+                self.setUpChart()
             }
         })
     }
