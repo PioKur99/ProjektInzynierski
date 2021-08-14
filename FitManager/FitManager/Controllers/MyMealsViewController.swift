@@ -225,13 +225,7 @@ class MyMealsViewController: UIViewController {
     func resetDayData() {
         var DK = self.breakfast.getCaloriesPerMeal() + self.lunch.getCaloriesPerMeal() + self.dinner.getCaloriesPerMeal()
         DK = round(10*DK)/10
-        
-        let currentDateTime = Date()
-        let userCalendar = Calendar.current
-        let requestedComponents: Set<Calendar.Component> = [.year, .month, .day]
-        let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
-        let currentDate = String(dateTimeComponents.day!) + "-" + String(dateTimeComponents.month!) + "-" + String(dateTimeComponents.year!)
-        
+
         DB.child("History").observeSingleEvent(of: .value, with: {snapshot in
             if(snapshot.childrenCount == 8) {
                 for child in snapshot.children.allObjects as! [DataSnapshot]{
@@ -242,7 +236,7 @@ class MyMealsViewController: UIViewController {
         })
         
         
-        DB.child("History/\(ID)").setValue(["calories" : DK, "date" : currentDate])
+        DB.child("History/\(ID)").setValue(["calories" : DK, "date" : getCurrentDate()])
         ID += 1
         UserDefaults.standard.setValue(ID, forKey: "ProductID")
         
@@ -254,5 +248,22 @@ class MyMealsViewController: UIViewController {
         self.carbsSlider.value = Float(0)
         self.proteinSlider.value = Float(0)
         self.fatSlider.value = Float(0)
+    }
+    
+    func getCurrentDate() -> String {
+        let currentDateTime = Date()
+        let userCalendar = Calendar.current
+        let requestedComponents: Set<Calendar.Component> = [.year, .month, .day]
+        let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
+        var day = String(dateTimeComponents.day!)
+        var month = String(dateTimeComponents.month!)
+        if(day.count == 1) {
+            day = "0" + day
+        }
+        if(month.count == 1) {
+            month = "0" + month
+        }
+        let currentDate = day + "." + month
+        return currentDate
     }
 }

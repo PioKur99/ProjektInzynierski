@@ -14,10 +14,16 @@ class StatsViewController: UIViewController {
     var chartView: BarsChart!
     var statsData: [HistoryItem] = []
     var barsArray: [(String, Double)] = []
+    var caloriesLimit = 0.0
     let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tempBMRNums = UserDefaults.standard.object(forKey: "BMRNumbs")
+        if let BMRNums = tempBMRNums as? NSArray {
+            let BMRValues = mapBMRValuesToStrings(inputArr: BMRNums)
+            caloriesLimit = Double(BMRValues[7])!
+        }
         initChartData()
     }
     
@@ -27,7 +33,7 @@ class StatsViewController: UIViewController {
     
     func setUpChart() {
         barsArray.removeAll()
-        let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0, to: 4000, by: 500))
+        let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0, to: caloriesLimit, by: 500))
         let sFrame = CGRect(x: 0, y: 50, width: self.view.frame.width - 20, height: self.view.frame.width + 200)
         for elem in statsData {
             barsArray.append((elem.date,elem.caloriesAmount))
