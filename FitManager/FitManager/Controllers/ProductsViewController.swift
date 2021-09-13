@@ -16,6 +16,7 @@ class ProductsViewController: UIViewController{
     var products: [Product] = []
     var currentProducts: [Product] = []
 
+    @IBOutlet weak var cellKcal: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,8 +105,9 @@ extension ProductsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = productsTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = productsTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
         cell.textLabel?.text = self.currentProducts[indexPath.row].name
         return cell
     }
+    
 }
