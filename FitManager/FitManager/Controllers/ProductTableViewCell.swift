@@ -9,9 +9,9 @@ import UIKit
 
 class ProductTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var productCalories: UILabel!
-    @IBOutlet weak var productName: UILabel!
-    @IBOutlet weak var productCarbs: UILabel!
-    @IBOutlet weak var productProtein: UILabel!
-    @IBOutlet weak var productFat: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var calories: UILabel!
+    @IBOutlet weak var carbs: UILabel!
+    @IBOutlet weak var protein: UILabel!
+    @IBOutlet weak var fat: UILabel!
 }

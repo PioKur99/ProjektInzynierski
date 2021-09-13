@@ -9,6 +9,7 @@ import Foundation
 
 class Meal {
     var products: [Product]
+    var name: String?
     
     init() {
         products = []
