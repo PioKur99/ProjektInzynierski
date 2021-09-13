@@ -23,6 +23,11 @@ class RecipesViewController: UIViewController {
     }
     
     @IBAction func newMealButtonPress(_ sender: Any) {
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "RecipeCreationViewController") as! RecipeCreationViewController
+        resultViewController.recipeName = "Rosol"
+        self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
 }

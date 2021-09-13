@@ -105,7 +105,7 @@ extension ProductsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = productsTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
+        let cell = productsTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = self.currentProducts[indexPath.row].name
         return cell
     }
