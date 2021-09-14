@@ -9,12 +9,11 @@ import UIKit
 
 class RecipeCreationViewController: UIViewController {
     
+    @IBOutlet weak var recipeNameLabel: UILabel!
     var recipeName: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(recipeName)
+        recipeNameLabel.text = recipeName
     }
-    
-
 }

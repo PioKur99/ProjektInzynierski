@@ -23,14 +23,28 @@ class RecipesViewController: UIViewController {
     }
     
     @IBAction func newMealButtonPress(_ sender: Any) {
+        let alert = UIAlertController(title: "Wprowadź nazwę przepisu", message: "", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: {field in})
+        let closeAction = UIAlertAction(title: "Zamknij", style: .cancel)
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "RecipeCreationViewController") as! RecipeCreationViewController
-        resultViewController.recipeName = "Rosol"
-        self.navigationController?.pushViewController(resultViewController, animated: true)
+        let okAction = UIAlertAction(title: "Zatwierdź", style: .default, handler: { _ in
+            guard let fields = alert.textFields else {
+                return
+            }
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let resultViewController = storyBoard.instantiateViewController(withIdentifier: "RecipeCreationViewController") as! RecipeCreationViewController
+            resultViewController.recipeName = fields[0].text!
+            self.navigationController?.pushViewController(resultViewController, animated: true)
+        })
+        
+        alert.addAction(closeAction)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    
     }
     
 }
+
 
 extension RecipesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
