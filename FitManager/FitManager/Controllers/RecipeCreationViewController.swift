@@ -16,4 +16,10 @@ class RecipeCreationViewController: UIViewController {
 
         recipeNameLabel.text = recipeName
     }
+    @IBAction func addProductPress(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "AddProdToMealViewController") as! AddProdToMealViewController
+        resultViewController.whichMeal = "Recipes/" + recipeName + "/"
+        self.navigationController?.pushViewController(resultViewController, animated: true)
+    }
 }
