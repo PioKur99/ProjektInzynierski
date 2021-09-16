@@ -15,6 +15,7 @@ class MealViewController: UIViewController {
     @IBOutlet weak var proteinLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
     
+    @IBOutlet weak var mealNameLabel: UILabel!
     var meal = Meal()
     var whichMeal = ""
     let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
@@ -23,6 +24,7 @@ class MealViewController: UIViewController {
         super.viewDidLoad()
         breakfastTable.dataSource = self
         breakfastTable.delegate = self
+        mealNameLabel.text = whichMeal
         initTable()
     }
     
