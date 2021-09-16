@@ -83,6 +83,11 @@ extension RecipesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            mealsListTable.beginUpdates()
+            DB.child("Recipes/" + self.mealsList[indexPath.row].name!).setValue(nil)
+            self.mealsList.remove(at: indexPath.row)
+            mealsListTable.deleteRows(at: [indexPath], with: .fade)
+            mealsListTable.endUpdates()
         }
     }
 }
