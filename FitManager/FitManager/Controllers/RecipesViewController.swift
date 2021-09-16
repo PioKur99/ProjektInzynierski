@@ -20,6 +20,7 @@ class RecipesViewController: UIViewController {
         mealsListTable.delegate = self
         mealsListTable.dataSource = self
         mealsSearchBar.delegate = self
+        getRecipesData()
     }
     
     @IBAction func newMealButtonPress(_ sender: Any) {
@@ -41,6 +42,21 @@ class RecipesViewController: UIViewController {
         alert.addAction(okAction)
         present(alert, animated: true)
     
+    }
+    
+    func getRecipesData() {
+        
+        DB.child("Recipes").observeSingleEvent(of: .value, with: {snapshot in
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                var meal = Meal(mealName: child.key)
+                for grandchild in child.children.allObjects as! [DataSnapshot] {
+                    let product = Product(snapshot: grandchild)
+                    meal.products.append(product)
+                }
+                self.mealsList.append(meal)
+                self.mealsListTable.reloadData()
+            }
+        })
     }
     
 }

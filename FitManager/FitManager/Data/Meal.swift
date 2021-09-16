@@ -15,6 +15,11 @@ class Meal {
         products = []
     }
     
+    init(mealName: String) {
+        name = mealName
+        products = []
+    }
+    
     
     func getCaloriesPerMeal() -> Double {
         var kcalPerMeal: Double = 0.0

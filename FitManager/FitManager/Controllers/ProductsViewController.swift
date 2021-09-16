@@ -28,7 +28,6 @@ class ProductsViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         initTable()
-        
     }
     
 
