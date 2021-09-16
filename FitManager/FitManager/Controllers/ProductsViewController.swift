@@ -87,7 +87,6 @@ extension ProductsViewController: UITableViewDelegate {
         if editingStyle == .delete {
             productsTable.beginUpdates()
             let toDelete = self.currentProducts[indexPath.row].location!
-            print(toDelete)
             DB.child("Products/\(toDelete)").setValue(nil)
             self.currentProducts.remove(at: indexPath.row)
             productsTable.deleteRows(at: [indexPath], with: .fade)

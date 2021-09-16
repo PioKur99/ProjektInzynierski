@@ -12,6 +12,7 @@ class RecipesViewController: UIViewController {
     
     let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
     var mealsList: [Meal] = []
+    var currMealsList: [Meal] = []
     @IBOutlet weak var mealsListTable: UITableView!
     @IBOutlet weak var mealsSearchBar: UISearchBar!
     
@@ -20,6 +21,10 @@ class RecipesViewController: UIViewController {
         mealsListTable.delegate = self
         mealsListTable.dataSource = self
         mealsSearchBar.delegate = self
+        getRecipesData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         getRecipesData()
     }
     
@@ -54,6 +59,7 @@ class RecipesViewController: UIViewController {
                     meal.products.append(product)
                 }
                 self.mealsList.append(meal)
+                self.currMealsList.append(meal)
                 self.mealsListTable.reloadData()
             }
         })
@@ -65,6 +71,17 @@ class RecipesViewController: UIViewController {
 extension RecipesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
+        guard !searchText.isEmpty else {
+            currMealsList = mealsList
+            mealsListTable.reloadData()
+            return
+        }
+        
+        currMealsList = mealsList.filter({ meal -> Bool in
+            guard let text = searchBar.text else {return false}
+            return meal.name!.contains(text)
+        })
+        mealsListTable.reloadData()
     }
 }
 
@@ -73,7 +90,7 @@ extension RecipesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "RecipeCreationViewController") as! RecipeCreationViewController
-        resultViewController.recipeName = self.mealsList[indexPath.row].name!
+        resultViewController.recipeName = self.currMealsList[indexPath.row].name!
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
@@ -84,9 +101,10 @@ extension RecipesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             mealsListTable.beginUpdates()
-            DB.child("Recipes/" + self.mealsList[indexPath.row].name!).setValue(nil)
-            self.mealsList.remove(at: indexPath.row)
+            DB.child("Recipes/" + self.currMealsList[indexPath.row].name!).setValue(nil)
+            self.currMealsList.remove(at: indexPath.row)
             mealsListTable.deleteRows(at: [indexPath], with: .fade)
+            mealsList = currMealsList
             mealsListTable.endUpdates()
         }
     }
@@ -95,16 +113,16 @@ extension RecipesViewController: UITableViewDelegate {
 extension RecipesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.mealsList.count
+        return self.currMealsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = mealsListTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ProductTableViewCell
-        cell.name.text = self.mealsList[indexPath.row].name
-        cell.calories.text = String(self.mealsList[indexPath.row].getCaloriesPerMeal())
-        cell.carbs.text = String(self.mealsList[indexPath.row].getCarbsPerMeal())
-        cell.protein.text = String(self.mealsList[indexPath.row].getProteinPerMeal())
-        cell.fat.text = String(self.mealsList[indexPath.row].getFatsPerMeal())
+        cell.name.text = self.currMealsList[indexPath.row].name
+        cell.calories.text = String(self.currMealsList[indexPath.row].getCaloriesPerMeal())
+        cell.carbs.text = String(self.currMealsList[indexPath.row].getCarbsPerMeal())
+        cell.protein.text = String(self.currMealsList[indexPath.row].getProteinPerMeal())
+        cell.fat.text = String(self.currMealsList[indexPath.row].getFatsPerMeal())
         return cell
     }
     
