@@ -39,6 +39,14 @@ class MealViewController: UIViewController {
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
+    @IBAction func addRecipeClick(_ sender: Any) {
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "RecipesViewController") as! RecipesViewController
+        resultViewController.mode = whichMeal
+        self.navigationController?.pushViewController(resultViewController, animated: true)
+    }
+    
     func initTable() {
         meal.products.removeAll()
         DB.child(whichMeal).observeSingleEvent(of: .value, with: {snapshot in

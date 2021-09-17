@@ -156,9 +156,9 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WC8-86-dPL">
-                                <rect key="frame" x="87" y="596" width="242" height="60"/>
+                                <rect key="frame" x="20" y="588" width="177" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <state key="normal" title="Dodaj produkt">
                                     <color key="titleColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -229,6 +229,17 @@
                                 <color key="textColor" red="0.20392156859999999" green="0.2470588235" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xir-MQ-1cN">
+                                <rect key="frame" x="221" y="588" width="177" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="Dodaj przepis">
+                                    <color key="titleColor" red="1" green="0.51764705879999995" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addRecipeClick:" destination="dzS-rN-AEO" eventType="touchUpInside" id="qYW-4T-Djo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OKg-sb-afb"/>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.90196078430000004" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1547,7 +1558,7 @@
         <!--Przepisy-->
         <scene sceneID="ZhN-4N-CoS">
             <objects>
-                <viewController id="viy-N5-vzm" customClass="RecipesViewController" customModule="FitManager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecipesViewController" id="viy-N5-vzm" customClass="RecipesViewController" customModule="FitManager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w3r-KA-C4F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1675,6 +1686,7 @@
                     <connections>
                         <outlet property="mealsListTable" destination="QEg-lX-S3q" id="fX4-bE-XXa"/>
                         <outlet property="mealsSearchBar" destination="hQ9-j2-85L" id="6h3-Ts-zL2"/>
+                        <outlet property="newRecipeButton" destination="ssT-6J-wAZ" id="EFy-Yz-7mU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRK-Zy-R1h" sceneMemberID="firstResponder"/>

@@ -13,15 +13,26 @@ class RecipesViewController: UIViewController {
     let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
     var mealsList: [Meal] = []
     var currMealsList: [Meal] = []
+    var mode: String = ""
+    var productID: Int = 0
     @IBOutlet weak var mealsListTable: UITableView!
     @IBOutlet weak var mealsSearchBar: UISearchBar!
     
+    @IBOutlet weak var newRecipeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         mealsListTable.delegate = self
         mealsListTable.dataSource = self
         mealsSearchBar.delegate = self
         getRecipesData()
+        if(mode != "") {
+            newRecipeButton.isHidden = true
+        }
+        
+        let tempID = UserDefaults.standard.object(forKey: "ProductID")
+        if let ID = tempID as? Int {
+            productID = ID
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,10 +99,27 @@ extension RecipesViewController: UISearchBarDelegate {
 extension RecipesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(mode != "") {
+            for product in currMealsList[indexPath.row].products {
+            DB.child(mode + "/\(productID)").setValue(["name": product.name,
+                                          "manufacturer": product.manufacturer,
+                                          "kcalPer100g": product.kcalPer100g,
+                                          "carbsPer100g": product.carbsPer100g,
+                                          "proteinPer100g": product.proteinsPer100g,
+                                          "fatsPer100g": product.fatsPer100g,
+                                          "quantity": product.weight!
+            ])
+            productID += 1
+            UserDefaults.standard.setValue(productID, forKey: "ProductID")
+            }
+            
+        }
+        else {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "RecipeCreationViewController") as! RecipeCreationViewController
         resultViewController.recipeName = self.currMealsList[indexPath.row].name!
         self.navigationController?.pushViewController(resultViewController, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
