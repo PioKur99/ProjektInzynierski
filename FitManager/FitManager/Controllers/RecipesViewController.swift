@@ -112,7 +112,7 @@ extension RecipesViewController: UITableViewDelegate {
             productID += 1
             UserDefaults.standard.setValue(productID, forKey: "ProductID")
             }
-            
+            self.navigationController?.popViewController(animated: true)
         }
         else {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)

@@ -69,7 +69,9 @@ class ProdToMealViewController: UIViewController {
     
     func succesAlert() {
         let alert = UIAlertController(title: "Produkt został dodany pomyślnie",message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Zamknij", style: .cancel)
+        let action = UIAlertAction(title: "Zamknij", style: .cancel, handler: { _ in
+            self.navigationController?.popViewController(animated: true)
+        })
         alert.addAction(action)
         present(alert, animated: true)
         
