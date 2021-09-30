@@ -33,6 +33,7 @@ class StatsViewController: UIViewController {
     
     func setUpChart() {
         barsArray.removeAll()
+        if (caloriesLimit < 500.0) {caloriesLimit = 2500.0}
         let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0, to: caloriesLimit, by: 500))
         let sFrame = CGRect(x: 0, y: 50, width: self.view.frame.width - 20, height: self.view.frame.width + 200)
         for elem in statsData {
