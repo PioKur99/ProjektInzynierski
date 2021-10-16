@@ -58,6 +58,13 @@ class MyMealsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateView()
+    }
+    
+    func updateView() {
         let tempBMRNums = UserDefaults.standard.object(forKey: "BMRNumbs")
         if let BMRNums = tempBMRNums as? NSArray {
             let BMRValues = mapBMRValuesToStrings(inputArr: BMRNums)
@@ -77,10 +84,6 @@ class MyMealsViewController: UIViewController {
             ID = tmpID
         }
         updateMealsData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        viewDidLoad()
     }
     
     @IBAction func newDayPress(_ sender: Any) {

@@ -52,7 +52,6 @@ class ProductDetailsViewController: UIViewController {
                                                 "fatsPer100g": Double(productFatInput.text!)!
               ])
         self.product.update(iName: productNameInput.text!, iManu: productManuInput.text!, iKcal: Double(productCaloriesInput.text!)!, iCarbs: Double(productCarbsInput.text!)!, iProtein: Double(productProteinInput.text!)!, iFats: Double(productFatInput.text!)!)
-        self.product.printProd()
         succesAlert()
         goToDisplayMode()
         }

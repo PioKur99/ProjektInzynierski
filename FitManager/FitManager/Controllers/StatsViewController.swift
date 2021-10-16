@@ -19,6 +19,10 @@ class StatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
         let tempBMRNums = UserDefaults.standard.object(forKey: "BMRNumbs")
         if let BMRNums = tempBMRNums as? NSArray {
             let BMRValues = mapBMRValuesToStrings(inputArr: BMRNums)
@@ -27,15 +31,11 @@ class StatsViewController: UIViewController {
         initChartData()
     }
     
-    /*override func viewDidAppear(_ animated: Bool) {
-        initChartData()
-    }*/
-    
     func setUpChart() {
         barsArray.removeAll()
         if (caloriesLimit < 500.0) {caloriesLimit = 2500.0}
         let chartConfig = BarsChartConfig(valsAxisConfig: ChartAxisConfig(from: 0, to: caloriesLimit, by: 500))
-        let sFrame = CGRect(x: 0, y: 50, width: self.view.frame.width - 20, height: self.view.frame.width + 200)
+        let sFrame = CGRect(x: 0, y: 50, width: self.view.frame.width - 20, height: self.view.frame.width + 225)
         for elem in statsData {
             barsArray.append((elem.date,elem.caloriesAmount))
         }

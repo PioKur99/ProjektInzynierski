@@ -11,6 +11,5 @@ class ActivityLevelsInfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 }

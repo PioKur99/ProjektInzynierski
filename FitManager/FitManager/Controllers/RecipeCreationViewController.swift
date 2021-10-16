@@ -22,7 +22,6 @@ class RecipeCreationViewController: UIViewController {
         recipeNameLabel.text = recipeName
         recipeTable.delegate = self
         recipeTable.dataSource = self
-        initTable()
     }
     
     override func viewDidAppear(_ animated: Bool) {

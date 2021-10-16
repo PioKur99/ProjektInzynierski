@@ -19,11 +19,9 @@ class ProductsViewController: UIViewController{
     @IBOutlet weak var cellKcal: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         productsTable.dataSource = self
         productsTable.delegate = self
         productSearchBar.delegate = self
-        initTable()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,6 +38,7 @@ class ProductsViewController: UIViewController{
     
     func initTable() {
         products.removeAll()
+        currentProducts.removeAll()
         DB.child("Products").observeSingleEvent(of: .value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let newProduct = Product(snapshot: child)
@@ -100,6 +99,7 @@ extension ProductsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.currentProducts.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

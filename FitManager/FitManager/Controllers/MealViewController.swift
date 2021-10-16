@@ -24,11 +24,10 @@ class MealViewController: UIViewController {
         super.viewDidLoad()
         breakfastTable.dataSource = self
         breakfastTable.delegate = self
-        mealNameLabel.text = whichMeal
-        initTable()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        mealNameLabel.text = whichMeal
         initTable()
     }
     
@@ -76,7 +75,6 @@ extension MealViewController: UITableViewDelegate {
         if editingStyle == .delete {
             breakfastTable.beginUpdates()
             let toDelete = self.meal.products[indexPath.row].location!
-            print(toDelete)
             DB.child(whichMeal + "/\(toDelete)").setValue(nil)
             self.meal.products.remove(at: indexPath.row)
             breakfastTable.deleteRows(at: [indexPath], with: .fade)

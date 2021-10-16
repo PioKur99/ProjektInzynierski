@@ -24,7 +24,6 @@ class RecipesViewController: UIViewController {
         mealsListTable.delegate = self
         mealsListTable.dataSource = self
         mealsSearchBar.delegate = self
-        getRecipesData()
         if(mode != "") {
             newRecipeButton.isHidden = true
         }
@@ -61,7 +60,8 @@ class RecipesViewController: UIViewController {
     }
     
     func getRecipesData() {
-        
+        mealsList.removeAll()
+        currMealsList.removeAll()
         DB.child("Recipes").observeSingleEvent(of: .value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let meal = Meal(mealName: child.key)

@@ -21,7 +21,6 @@ class AddProdToMealViewController: UIViewController {
         productsTable.dataSource = self
         productsTable.delegate = self
         productsSearchBar.delegate = self
-        initTable()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,6 +29,7 @@ class AddProdToMealViewController: UIViewController {
     
     func initTable() {
         products.removeAll()
+        currentProducts.removeAll()
         DB.child("Products").observeSingleEvent(of: .value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let newProduct = Product(snapshot: child)
