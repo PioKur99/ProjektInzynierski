@@ -230,18 +230,16 @@ class MyMealsViewController: UIViewController {
         DK = round(10*DK)/10
 
         DB.child("History").observeSingleEvent(of: .value, with: {snapshot in
-            if(snapshot.childrenCount == 8) {
+            if(snapshot.childrenCount == 7) {
                 for child in snapshot.children.allObjects as! [DataSnapshot]{
                     self.DB.child("History/\(child.key)").setValue(nil)
                     break;
                 }
             }
+            self.DB.child("History/\(self.ID)").setValue(["calories" : DK, "date" : self.getCurrentDate()])
+            self.ID += 1
+            UserDefaults.standard.setValue(self.ID, forKey: "ProductID")
         })
-        
-        
-        DB.child("History/\(ID)").setValue(["calories" : DK, "date" : getCurrentDate()])
-        ID += 1
-        UserDefaults.standard.setValue(ID, forKey: "ProductID")
         
         self.DK.text = ""
         self.DWW.text = ""
