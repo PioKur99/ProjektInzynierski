@@ -27,7 +27,7 @@ class MealViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        mealNameLabel.text = whichMeal
+        mealNameLabel.text = String(whichMeal.dropFirst(6))
         initTable()
     }
     

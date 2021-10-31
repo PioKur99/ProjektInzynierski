@@ -97,19 +97,19 @@ class MyMealsViewController: UIViewController {
     @IBAction func navigateToBreakfast(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
-        resultViewController.whichMeal = "Breakfast"
+        resultViewController.whichMeal = "Meals/Śniadanie"
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     @IBAction func navigateToLunch(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
-        resultViewController.whichMeal = "Lunch"
+        resultViewController.whichMeal = "Meals/Obiad"
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     @IBAction func navigateToSupper(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let resultViewController = storyBoard.instantiateViewController(withIdentifier: "MealViewController") as! MealViewController
-        resultViewController.whichMeal = "Dinner"
+        resultViewController.whichMeal = "Meals/Kolacja"
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
@@ -124,7 +124,7 @@ class MyMealsViewController: UIViewController {
     
     func updateBreakfastData() {
         breakfast.products.removeAll()
-        DB.child("Breakfast").observeSingleEvent(of: .value, with: {snapshot in
+        DB.child("Meals/Śniadanie").observeSingleEvent(of: .value, with: {snapshot in
             if(!snapshot.hasChildren()) {
                 self.BK.text = "0.0"
                 self.BWW.text = "0.0"
@@ -144,7 +144,7 @@ class MyMealsViewController: UIViewController {
     
     func updateLunchData() {
         lunch.products.removeAll()
-        DB.child("Lunch").observeSingleEvent(of: .value, with: {snapshot in
+        DB.child("Meals/Obiad").observeSingleEvent(of: .value, with: {snapshot in
             if(!snapshot.hasChildren()) {
                 self.LK.text = "0.0"
                 self.LWW.text = "0.0"
@@ -164,7 +164,7 @@ class MyMealsViewController: UIViewController {
     
     func updateDinnerData() {
         dinner.products.removeAll()
-        DB.child("Dinner").observeSingleEvent(of: .value, with: {snapshot in
+        DB.child("Meals/Kolacja").observeSingleEvent(of: .value, with: {snapshot in
             if(!snapshot.hasChildren()) {
                 self.SK.text = "0.0"
                 self.SWW.text = "0.0"
@@ -202,7 +202,7 @@ class MyMealsViewController: UIViewController {
     }
     
     func resetBreakfastData() {
-        DB.child("Breakfast").setValue(nil)
+        DB.child("Meals/Śniadanie").setValue(nil)
         breakfast.products.removeAll()
         self.BK.text = String(self.breakfast.getCaloriesPerMeal())
         self.BWW.text = String(self.breakfast.getCarbsPerMeal())
@@ -210,7 +210,7 @@ class MyMealsViewController: UIViewController {
         self.BF.text = String(self.breakfast.getFatsPerMeal())
     }
     func resetLunchData() {
-        DB.child("Lunch").setValue(nil)
+        DB.child("Meals/Obiad").setValue(nil)
         lunch.products.removeAll()
         self.LK.text = String(self.lunch.getCaloriesPerMeal())
         self.LWW.text = String(self.lunch.getCarbsPerMeal())
@@ -218,7 +218,7 @@ class MyMealsViewController: UIViewController {
         self.LF.text = String(self.lunch.getFatsPerMeal())
     }
     func resetDinnerData() {
-        DB.child("Dinner").setValue(nil)
+        DB.child("Meals/Kolacja").setValue(nil)
         dinner.products.removeAll()
         self.SK.text = String(self.dinner.getCaloriesPerMeal())
         self.SWW.text = String(self.dinner.getCarbsPerMeal())
