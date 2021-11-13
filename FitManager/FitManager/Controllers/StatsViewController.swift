@@ -14,6 +14,7 @@ class StatsViewController: UIViewController {
     var chartView: BarsChart!
     var caloriesLimit = 0.0
     let DB = Database.database(url: "https://fitmanager-database-default-rtdb.europe-west1.firebasedatabase.app").reference()
+    var VIDHistory: String = UIDevice.current.identifierForVendor!.uuidString + "-History"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class StatsViewController: UIViewController {
     
     func initChartData() {
         var statsData: [HistoryItem] = []
-        DB.child("History").observeSingleEvent(of: .value, with: {snapshot in
+        DB.child(VIDHistory).observeSingleEvent(of: .value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let newEntry = HistoryItem(snapshot: child)
                 statsData.append(newEntry)
