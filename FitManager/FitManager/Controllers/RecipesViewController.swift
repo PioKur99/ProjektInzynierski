@@ -47,10 +47,18 @@ class RecipesViewController: UIViewController {
             guard let fields = alert.textFields else {
                 return
             }
+            
+            if(!self.checkIfMealAlreadyExists(mealName: fields[0].text!))
+            {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let resultViewController = storyBoard.instantiateViewController(withIdentifier: "RecipeCreationViewController") as! RecipeCreationViewController
             resultViewController.recipeName = fields[0].text!
             self.navigationController?.pushViewController(resultViewController, animated: true)
+            }
+            
+            else {
+                self.recipeAlreadyExistsAlert()
+            }
         })
         
         alert.addAction(closeAction)
@@ -76,6 +84,22 @@ class RecipesViewController: UIViewController {
         })
     }
     
+    func recipeAlreadyExistsAlert() {
+        let alert = UIAlertController(title: "Nie udało się dodać przepisu", message: "Przepis o podanej nazwie już istnieje!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Zamknij", style: .cancel)
+        alert.addAction(action)
+        present(alert, animated: true)
+        
+    }
+    
+    func checkIfMealAlreadyExists(mealName: String) -> Bool{
+        for meal in mealsList {
+            if(meal.name == mealName) {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 
